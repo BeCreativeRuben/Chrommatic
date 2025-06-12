@@ -3,7 +3,7 @@ function Hero() {
         <section className="bg-gradient-to-b from-black via-gray-900 to-black text-white py-20 px-4 text-center">
             <div className="max-w-3xl mx-auto">
                 <img
-                    src="/logo.jpg"
+                    src="/images/logo.jpg"
                     alt="Chromattic logo"
                     className="w-40 h-auto mx-auto mb-6 max-w-xs"
                 />
