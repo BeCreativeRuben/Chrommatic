@@ -1,41 +1,40 @@
 import { useState } from "react";
-import { Menu, X } from "lucide-react"; // Voor hamburger & sluit icoon
+import { Menu, X } from "lucide-react";
 
 function Navbar() {
-    const [isOpen, setIsOpen] = useState(false);
-
-    const toggleMenu = () => setIsOpen(!isOpen);
+    const [menuOpen, setMenuOpen] = useState(false);
+    const toggleMenu = () => setMenuOpen(!menuOpen);
 
     return (
-        <header className="bg-black text-white fixed w-full z-50 shadow-md">
-            <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-                <div className="text-2xl font-bold tracking-widest">CHROMATTIC</div>
-
-                <nav className="hidden md:flex space-x-6">
-                    <a href="#bio" className="hover:text-pink-400">Bio</a>
-                    <a href="#shows" className="hover:text-pink-400">Shows</a>
-                    <a href="#releases" className="hover:text-pink-400">Releases</a>
-                    <a href="#contact" className="hover:text-pink-400">Contact</a>
-                </nav>
-
+        <>
+            <header className="sticky top-0 z-50 bg-black flex justify-between items-center px-6 py-4 border-b border-red-900">
+                <a href="#" className="text-2xl font-bold">CHROMATTIC</a>
                 <button
-                    className="md:hidden text-white focus:outline-none"
+                    className="text-white lg:hidden"
                     onClick={toggleMenu}
+                    aria-label="Toggle Menu"
                 >
-                    {isOpen ? <X size={28} /> : <Menu size={28} />}
+                    {menuOpen ? <X size={28} /> : <Menu size={28} />}
                 </button>
-            </div>
+                <nav className="hidden lg:flex gap-6 text-sm uppercase tracking-wide">
+                    <a href="#releases" className="hover:text-red-400">Releases</a>
+                    <a href="#shows" className="hover:text-red-400">Shows</a>
+                    <a href="#media" className="hover:text-red-400">Media</a>
+                    <a href="#bio" className="hover:text-red-400">Bio</a>
+                    <a href="#contact" className="hover:text-red-400">Contact</a>
+                </nav>
+            </header>
 
-            {/* Mobile Menu */}
-            {isOpen && (
-                <div className="md:hidden bg-black border-t border-gray-800 px-4 pb-4 flex flex-col space-y-3">
-                    <a href="#bio" className="hover:text-pink-400" onClick={toggleMenu}>Bio</a>
-                    <a href="#shows" className="hover:text-pink-400" onClick={toggleMenu}>Shows</a>
-                    <a href="#releases" className="hover:text-pink-400" onClick={toggleMenu}>Releases</a>
-                    <a href="#contact" className="hover:text-pink-400" onClick={toggleMenu}>Contact</a>
-                </div>
+            {menuOpen && (
+                <nav className="flex flex-col lg:hidden gap-4 p-6 border-b border-red-700 bg-black text-sm uppercase tracking-wide">
+                    <a href="#releases" onClick={toggleMenu}>Releases</a>
+                    <a href="#shows" onClick={toggleMenu}>Shows</a>
+                    <a href="#media" onClick={toggleMenu}>Media</a>
+                    <a href="#bio" onClick={toggleMenu}>Bio</a>
+                    <a href="#contact" onClick={toggleMenu}>Contact</a>
+                </nav>
             )}
-        </header>
+        </>
     );
 }
 

@@ -1,12 +1,11 @@
-// src/App.jsx
 import { useState } from "react";
+import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Releases from "./components/Releases";
 import Shows from "./components/Shows";
 import Media from "./components/Media";
 import Bio from "./components/Bio";
 import Contact from "./components/Contact";
-import { Menu, X } from "lucide-react";
 
 function App() {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -16,23 +15,7 @@ function App() {
     return (
         <div className="bg-black text-white font-sans">
             {/* Navbar */}
-            <header className="flex justify-between items-center px-6 py-4 border-b border-red-700">
-                <div className="text-2xl font-bold">CHROMATTIC</div>
-                <button
-                    className="text-white lg:hidden"
-                    onClick={toggleMenu}
-                    aria-label="Toggle Menu"
-                >
-                    {menuOpen ? <X size={28} /> : <Menu size={28} />}
-                </button>
-                <nav className="hidden lg:flex gap-6 text-sm uppercase tracking-wide">
-                    <a href="#releases" className="hover:text-red-400">Releases</a>
-                    <a href="#shows" className="hover:text-red-400">Shows</a>
-                    <a href="#media" className="hover:text-red-400">Media</a>
-                    <a href="#bio" className="hover:text-red-400">Bio</a>
-                    <a href="#contact" className="hover:text-red-400">Contact</a>
-                </nav>
-            </header>
+            <Navbar />
 
             {/* Mobile Menu */}
             {menuOpen && (
