@@ -31,73 +31,71 @@ function Shows() {
     const allYears = Array.from(new Set(shows.map((s) => new Date(s.date).getFullYear().toString()))).sort((a, b) => b - a);
 
     return (
-        <section className="bg-red-900 text-white py-16 px-4">
-            <div className="max-w-4xl mx-auto text-center">
-                <h2 className="text-4xl font-bold mb-6">Shows</h2>
+        <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-4xl font-bold mb-6">Shows</h2>
 
-                <div className="mb-8">
-                    <select
-                        value={selectedYear}
-                        onChange={(e) => setSelectedYear(e.target.value)}
-                        className="bg-black border border-white text-white py-2 px-4 rounded"
-                    >
-                        {allYears.map((year) => (
-                            <option key={year} value={year}>{year}</option>
-                        ))}
-                    </select>
-                </div>
-
-                {upcoming.length > 0 && (
-                    <div>
-                        <h3 className="text-2xl font-semibold mb-4">Upcoming Shows</h3>
-                        <div className="divide-y divide-white">
-                            {upcoming.map((show, i) => (
-                                <div key={i} className="flex justify-between items-center py-4">
-                                    <span className="text-gray-400 w-1/4 text-left">
-                                        {new Date(show.date).toLocaleDateString("nl-BE", {
-                                            day: "numeric",
-                                            month: "long",
-                                            year: "numeric",
-                                        })}
-                                    </span>
-                                    <div className="flex-1 text-center">
-                                        <p className="font-semibold">{show.title}</p>
-                                    </div>
-                                    <span className="text-gray-400 text-sm w-1/4 text-right">
-                                        {show.location}, België
-                                    </span>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                )}
-                <div className="mt-12"></div>
-                {past.length > 0 && (
-                    <div>
-                        <h3 className="text-2xl font-semibold mb-4">Past Shows</h3>
-                        <div className="divide-y divide-white">
-                            {past.map((show, i) => (
-                                <div key={i} className="flex justify-between items-center py-4">
-                                    <span className="text-gray-400 w-1/4 text-left">
-                                        {new Date(show.date).toLocaleDateString("nl-BE", {
-                                            day: "numeric",
-                                            month: "long",
-                                            year: "numeric",
-                                        })}
-                                    </span>
-                                    <div className="flex-1 text-center">
-                                        <p className="font-semibold">{show.title}</p>
-                                    </div>
-                                    <span className="text-gray-400 text-sm w-1/4 text-right">
-                                        {show.location}, België
-                                    </span>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                )}
+            <div className="mb-8">
+                <select
+                    value={selectedYear}
+                    onChange={(e) => setSelectedYear(e.target.value)}
+                    className="bg-black border border-white text-white py-2 px-4 rounded"
+                >
+                    {allYears.map((year) => (
+                        <option key={year} value={year}>{year}</option>
+                    ))}
+                </select>
             </div>
-        </section>
+
+            {upcoming.length > 0 && (
+                <div>
+                    <h3 className="text-2xl font-semibold mb-4">Upcoming Shows</h3>
+                    <div className="divide-y divide-white">
+                        {upcoming.map((show, i) => (
+                            <div key={i} className="flex justify-between items-center py-4">
+                                <span className="text-gray-400 w-1/4 text-left">
+                                    {new Date(show.date).toLocaleDateString("nl-BE", {
+                                        day: "numeric",
+                                        month: "long",
+                                        year: "numeric",
+                                    })}
+                                </span>
+                                <div className="flex-1 text-center">
+                                    <p className="font-semibold">{show.title}</p>
+                                </div>
+                                <span className="text-gray-400 text-sm w-1/4 text-right">
+                                    {show.location}, België
+                                </span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            )}
+            <div className="mt-12"></div>
+            {past.length > 0 && (
+                <div>
+                    <h3 className="text-2xl font-semibold mb-4">Past Shows</h3>
+                    <div className="divide-y divide-white">
+                        {past.map((show, i) => (
+                            <div key={i} className="flex justify-between items-center py-4">
+                                <span className="text-gray-400 w-1/4 text-left">
+                                    {new Date(show.date).toLocaleDateString("nl-BE", {
+                                        day: "numeric",
+                                        month: "long",
+                                        year: "numeric",
+                                    })}
+                                </span>
+                                <div className="flex-1 text-center">
+                                    <p className="font-semibold">{show.title}</p>
+                                </div>
+                                <span className="text-gray-400 text-sm w-1/4 text-right">
+                                    {show.location}, België
+                                </span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            )}
+        </div>
     );
 }
 
