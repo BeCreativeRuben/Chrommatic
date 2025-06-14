@@ -14,24 +14,12 @@ function App() {
 
     return (
         <div className="bg-black text-white font-sans">
-            {/* Navbar */}
             <Navbar />
 
-            {/* Mobile Menu */}
-            {menuOpen && (
-                <nav className="flex flex-col lg:hidden gap-4 p-6 border-b border-red-700 bg-black text-sm uppercase tracking-wide">
-                    <a href="#releases" onClick={toggleMenu}>Releases</a>
-                    <a href="#shows" onClick={toggleMenu}>Shows</a>
-                    <a href="#media" onClick={toggleMenu}>Media</a>
-                    <a href="#bio" onClick={toggleMenu}>Bio</a>
-                    <a href="#contact" onClick={toggleMenu}>Contact</a>
-                </nav>
-            )}
+            <section id="hero" className="py-20 px-4 text-center bg-red-900">
+                <Hero />
+            </section>
 
-            {/* Hero Section */}
-            <Hero />
-
-            {/* Placeholder Sections */}
             <section id="releases" className="py-20 px-4 text-center">
                 <Releases />
             </section>
