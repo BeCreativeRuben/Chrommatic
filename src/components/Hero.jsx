@@ -1,6 +1,6 @@
 function Hero() {
     return (
-        <section className="bg-gradient-to-b from-black via-gray-900 to-black text-white py-20 px-4 text-center">
+        <section className="bg-gradient-to-b from-black via-red-950 to-black text-white py-20 px-4 text-center">
             <div className="max-w-3xl mx-auto">
                 <img
                     src="/images/logo.jpg"
