@@ -3,6 +3,9 @@ import { useState } from "react";
 import Hero from "./components/Hero";
 import Releases from "./components/Releases";
 import Shows from "./components/Shows";
+import Media from "./components/Media";
+import Bio from "./components/Bio";
+import Contact from "./components/Contact";
 import { Menu, X } from "lucide-react";
 
 function App() {
@@ -55,18 +58,15 @@ function App() {
             </section>
 
             <section id="media" className="py-20 px-4 text-center">
-                <h2 className="text-4xl font-bold mb-4">Media</h2>
-                <p>Foto’s en video’s van de band.</p>
+                <Media />
             </section>
 
             <section id="bio" className="py-20 px-4 text-center bg-red-900">
-                <h2 className="text-4xl font-bold mb-4">Bio</h2>
-                <p>Korte beschrijving van wie jullie zijn.</p>
+                <Bio />
             </section>
 
             <section id="contact" className="py-20 px-4 text-center">
-                <h2 className="text-4xl font-bold mb-4">Contact</h2>
-                <p>chromattic.contact@gmail.com</p>
+                <Contact />
             </section>
 
             <footer className="fixed-bottom-0 left-0 w-full bg-black py-6 text-center border-t border-red-700 text-sm text-gray-500">
