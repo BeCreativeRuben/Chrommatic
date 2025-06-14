@@ -8,10 +8,6 @@ import Bio from "./components/Bio";
 import Contact from "./components/Contact";
 
 function App() {
-    const [menuOpen, setMenuOpen] = useState(false);
-
-    const toggleMenu = () => setMenuOpen(!menuOpen);
-
     return (
         <div className="bg-black text-white font-sans">
             <Navbar />
