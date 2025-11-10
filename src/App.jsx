@@ -11,6 +11,7 @@ import Shows from "./components/sections/Shows";
 import Media from "./components/sections/Media";
 import Bio from "./components/sections/Bio";
 import Contact from "./components/sections/Contact";
+import Newsletter from "./components/sections/Newsletter";
 
 function App() {
   return (
@@ -40,6 +41,8 @@ function App() {
       <Section id="contact">
         <Contact />
       </Section>
+
+      <Newsletter />
 
       <Footer />
     </div>
