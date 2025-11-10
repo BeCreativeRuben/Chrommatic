@@ -1,45 +1,49 @@
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import Releases from "./components/Releases";
-import Shows from "./components/Shows";
-import Media from "./components/Media";
-import Bio from "./components/Bio";
-import Contact from "./components/Contact";
+/**
+ * Main App component
+ */
+
+import Navbar from "./components/layout/Navbar";
+import Footer from "./components/layout/Footer";
+import Section from "./components/layout/Section";
+import Hero from "./components/sections/Hero";
+import Releases from "./components/sections/Releases";
+import Shows from "./components/sections/Shows";
+import Media from "./components/sections/Media";
+import Bio from "./components/sections/Bio";
+import Contact from "./components/sections/Contact";
 
 function App() {
-    return (
-        <div className="bg-black text-white font-sans">
-            <Navbar />
+  return (
+    <div className="bg-black text-white font-sans">
+      <Navbar />
 
-            <section id="hero" className="py-20 px-4 text-center bg-red-900">
-                <Hero />
-            </section>
+      <Section id="hero" alternate>
+        <Hero />
+      </Section>
 
-            <section id="releases" className="py-20 px-4 text-center">
-                <Releases />
-            </section>
+      <Section id="releases">
+        <Releases />
+      </Section>
 
-            <section id="shows" className="py-20 px-4 text-center bg-red-900">
-                <Shows />
-            </section>
+      <Section id="shows" alternate>
+        <Shows />
+      </Section>
 
-            <section id="media" className="py-20 px-4 text-center">
-                <Media />
-            </section>
+      <Section id="media">
+        <Media />
+      </Section>
 
-            <section id="bio" className="py-20 px-4 text-center bg-red-900">
-                <Bio />
-            </section>
+      <Section id="bio" alternate>
+        <Bio />
+      </Section>
 
-            <section id="contact" className="py-20 px-4 text-center">
-                <Contact />
-            </section>
+      <Section id="contact">
+        <Contact />
+      </Section>
 
-            <footer className="fixed-bottom-0 left-0 w-full bg-black py-6 text-center border-t border-red-700 text-sm text-gray-500">
-                &copy; {new Date().getFullYear()} Chromattic. All rights reserved.
-            </footer>
-        </div>
-    );
+      <Footer />
+    </div>
+  );
 }
 
 export default App;
