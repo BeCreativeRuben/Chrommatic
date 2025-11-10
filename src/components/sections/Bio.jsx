@@ -24,11 +24,11 @@ function Bio() {
       {/* Intro Section - Full Width Card */}
       <div className="mb-20">
         <div className="bg-gradient-to-br from-red-900/30 via-black to-black rounded-2xl p-8 md:p-12 border border-red-900/50 shadow-2xl">
-          <div className="flex items-start gap-4 mb-6">
-            <div className="p-3 bg-red-900/50 rounded-lg">
+          <div className="flex flex-col md:flex-row items-center md:items-start gap-4 mb-6 text-center md:text-left">
+            <div className="p-3 bg-red-900/50 rounded-lg flex-shrink-0">
               <Users className="text-red-400" size={32} />
             </div>
-            <div className="flex-1">
+            <div className="flex-1 w-full md:w-auto">
               <h3 className="text-2xl font-bold mb-4 text-red-400 uppercase tracking-wide">
                 {language === "nl" ? "Het Verhaal" : "The Story"}
               </h3>
