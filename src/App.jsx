@@ -18,7 +18,9 @@ function App() {
     <div className="bg-black text-white font-sans">
       <Navbar />
 
-      <Hero />
+      <Section id="hero" alternate>
+        <Hero />
+      </Section>
 
       <Section id="releases">
         <Releases />

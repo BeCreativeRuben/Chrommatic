@@ -34,16 +34,16 @@ function Hero() {
   };
 
   return (
-    <section id="hero" className="min-h-[85vh] sm:min-h-[90vh] flex flex-col justify-center items-center text-center relative overflow-hidden w-full">
+    <div className="min-h-[85vh] sm:min-h-[90vh] flex flex-col justify-center items-center text-center relative overflow-hidden px-4 sm:px-6 md:px-8">
       {/* Background gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-red-900/20 via-black to-black"></div>
       <div className="absolute inset-0 bg-gradient-radial from-red-900/10 via-transparent to-transparent"></div>
       
       {/* Animated background elements - Responsive sizes */}
       <div className="absolute top-10 sm:top-20 left-5 sm:left-10 w-48 h-48 sm:w-72 sm:h-72 bg-red-500/5 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-10 sm:bottom-20 right-5 sm:right-10 w-64 h-64 sm:w-96 sm:h-96 bg-red-600/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
+      <div className="absolute bottom-10 sm:bottom-20 right-5 sm:bottom-20 right-5 sm:right-10 w-64 h-64 sm:w-96 sm:h-96 bg-red-600/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
 
-      <div className="relative z-10 max-w-4xl mx-auto w-full px-4 sm:px-6 md:px-8">
+      <div className="relative z-10 max-w-4xl mx-auto w-full">
         {/* Logo - Responsive sizing */}
         <div className="mb-6 sm:mb-8 animate-fade-in">
           <img
@@ -93,7 +93,7 @@ function Hero() {
           <ArrowDown className="text-gray-400 w-5 h-5 sm:w-6 sm:h-6" />
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 
