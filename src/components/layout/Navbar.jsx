@@ -3,7 +3,7 @@
  */
 
 import { useState, useEffect } from "react";
-import { Menu, X, Languages } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { BRAND } from "../../data/constants";
 import { IMAGE_PATHS } from "../../utils/imagePaths";
 import { useScrollSpy } from "../../hooks/useScrollSpy";
@@ -86,14 +86,6 @@ function Navbar() {
         </button>
         
         <div className="hidden lg:flex items-center gap-6">
-          <button
-            onClick={toggleLanguage}
-            className="flex items-center gap-2 px-3 py-2 text-sm uppercase tracking-widest font-semibold text-white hover:text-red-400 transition-colors border border-white/20 hover:border-red-400/50 rounded-sm"
-            aria-label={`Switch to ${language === "nl" ? "English" : "Nederlands"}`}
-          >
-            <Languages size={16} />
-            {language === "nl" ? "EN" : "NL"}
-          </button>
           <nav className="flex gap-8 text-sm uppercase tracking-widest font-semibold" aria-label="Main navigation">
             {getNavLinks(t).map((link) => {
               const isActive = activeSection === link.id;
@@ -116,6 +108,17 @@ function Navbar() {
           >
             {t.nav.bookNow}
           </a>
+          <button
+            onClick={toggleLanguage}
+            className="flex items-center gap-2 px-3 py-2 text-sm uppercase tracking-widest font-semibold text-white hover:text-red-400 transition-colors border border-white/20 hover:border-red-400/50 rounded-sm"
+            aria-label={`Switch to ${language === "nl" ? "English" : "Nederlands"}`}
+            title={`Switch to ${language === "nl" ? "English" : "Nederlands"}`}
+          >
+            <span className="text-xl">
+              {language === "nl" ? "🇳🇱" : "🇬🇧"}
+            </span>
+            <span>{language === "nl" ? "EN" : "NL"}</span>
+          </button>
         </div>
       </header>
 
@@ -131,8 +134,10 @@ function Navbar() {
               className="flex items-center justify-center gap-2 px-4 py-3 text-lg uppercase tracking-widest font-semibold text-white hover:text-red-400 transition-colors border border-white/20 hover:border-red-400/50 rounded-sm mb-4"
               aria-label={`Switch to ${language === "nl" ? "English" : "Nederlands"}`}
             >
-              <Languages size={20} />
-              {language === "nl" ? "EN" : "NL"}
+              <span className="text-2xl">
+                {language === "nl" ? "🇳🇱" : "🇬🇧"}
+              </span>
+              <span>{language === "nl" ? "EN" : "NL"}</span>
             </button>
             {getNavLinks(t).map((link, index) => {
               const isActive = activeSection === link.id;

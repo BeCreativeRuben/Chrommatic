@@ -14,6 +14,10 @@ export const translations = {
     },
     hero: {
       title: "CHROMATTIC",
+      tagline: "Alternatieve Rock uit het Waasland",
+      description: "Nostalgie van 2000's poppunk gemengd met moderne sounds",
+      bookNow: "Boek Nu",
+      viewShows: "Bekijk Shows",
     },
     releases: {
       title: "Releases",
@@ -69,6 +73,10 @@ export const translations = {
     },
     hero: {
       title: "CHROMATTIC",
+      tagline: "Alternative Rock from the Waasland",
+      description: "Nostalgia of 2000's pop punk blended with modern sounds",
+      bookNow: "Book Now",
+      viewShows: "View Shows",
     },
     releases: {
       title: "Releases",
