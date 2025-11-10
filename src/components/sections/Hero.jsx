@@ -41,7 +41,7 @@ function Hero() {
       
       {/* Animated background elements - Responsive sizes */}
       <div className="absolute top-10 sm:top-20 left-5 sm:left-10 w-48 h-48 sm:w-72 sm:h-72 bg-red-500/5 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-10 sm:bottom-20 right-5 sm:bottom-20 right-5 sm:right-10 w-64 h-64 sm:w-96 sm:h-96 bg-red-600/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
+      <div className="absolute bottom-10 sm:bottom-20 right-5 sm:right-10 w-64 h-64 sm:w-96 sm:h-96 bg-red-600/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
 
       <div className="relative z-10 max-w-4xl mx-auto w-full">
         {/* Logo - Responsive sizing */}
