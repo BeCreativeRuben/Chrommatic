@@ -82,7 +82,7 @@ function Navbar() {
           aria-label="Toggle Menu"
           aria-expanded={menuOpen}
         >
-          {menuOpen ? <X size={24} className="sm:w-7 sm:h-7" /> : <Menu size={24} className="sm:w-7 sm:h-7" />}
+          {menuOpen ? <X size={24} className="sm:w-7 sm:h-7 w-6 h-6" /> : <Menu size={24} className="sm:w-7 sm:h-7 w-6 h-6" />}
         </button>
         
         <div className="hidden lg:flex items-center gap-6">
