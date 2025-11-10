@@ -55,10 +55,10 @@ function Navbar() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 bg-gradient-to-b from-black via-black/95 to-black/90 backdrop-blur-md flex justify-between items-center px-6 py-4 border-b border-red-900/50 shadow-xl shadow-red-900/20">
+      <header className="sticky top-0 z-50 bg-gradient-to-b from-black via-black/95 to-black/90 backdrop-blur-md flex justify-between items-center px-3 sm:px-4 md:px-6 py-2 sm:py-3 md:py-4 border-b border-red-900/50 shadow-xl shadow-red-900/20">
         <a 
           href="#hero" 
-          className="flex items-center gap-3 group" 
+          className="flex items-center gap-2 sm:gap-3 group flex-shrink-0" 
           aria-label="Home"
           onClick={(e) => handleLinkClick(e, "#hero")}
         >
@@ -66,23 +66,23 @@ function Navbar() {
             <img
               src={IMAGE_PATHS.logo}
               alt="Chromattic logo"
-              className="h-10 w-auto logo-metallic cursor-pointer"
+              className="h-8 sm:h-9 md:h-10 w-auto logo-metallic cursor-pointer"
               loading="eager"
             />
           ) : (
-            <span className="text-2xl font-bold gradient-text tracking-widest font-display">
+            <span className="text-lg sm:text-xl md:text-2xl font-bold gradient-text tracking-widest font-display">
               {BRAND.name}
             </span>
           )}
         </a>
         
         <button
-          className="text-white lg:hidden z-50 relative"
+          className="text-white lg:hidden z-50 relative flex-shrink-0 p-2 hover:bg-red-900/20 rounded transition-colors"
           onClick={toggleMenu}
           aria-label="Toggle Menu"
           aria-expanded={menuOpen}
         >
-          {menuOpen ? <X size={28} /> : <Menu size={28} />}
+          {menuOpen ? <X size={24} className="sm:w-7 sm:h-7" /> : <Menu size={24} className="sm:w-7 sm:h-7" />}
         </button>
         
         <div className="hidden lg:flex items-center gap-6">
