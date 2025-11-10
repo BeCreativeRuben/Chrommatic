@@ -18,9 +18,9 @@ function Media() {
         {t.description} <strong className="text-red-400">Circles</strong>.
       </p>
 
-      <div className="relative w-full max-w-5xl aspect-video mx-auto rounded-lg overflow-hidden shadow-2xl border-2 border-red-900/30">
+      <div className="relative w-full max-w-5xl mx-auto rounded-lg overflow-hidden shadow-2xl border-2 border-red-900/30" style={{ aspectRatio: '16/9' }}>
         <iframe
-          className="w-full h-full"
+          className="w-full h-full absolute inset-0"
           src="https://www.youtube.com/embed/g9ULqy29kZw"
           title="Chromattic - Circles (Official Video)"
           frameBorder="0"
