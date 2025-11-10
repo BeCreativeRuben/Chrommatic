@@ -33,6 +33,13 @@ export const translations = {
     },
     bio: {
       title: "Bio",
+      story: "Het Verhaal",
+      releases: "Releases",
+      liveShows: "Live Shows",
+      future: "De Toekomst",
+      formed: "Opgericht",
+      members: "Leden",
+      debutAlbum: "Debut Album",
     },
     contact: {
       title: "Contact",
@@ -81,6 +88,13 @@ export const translations = {
     },
     bio: {
       title: "Bio",
+      story: "The Story",
+      releases: "Releases",
+      liveShows: "Live Shows",
+      future: "The Future",
+      formed: "Formed",
+      members: "Members",
+      debutAlbum: "Debut Album",
     },
     contact: {
       title: "Contact",
