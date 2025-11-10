@@ -2,13 +2,15 @@
  * Releases data for Chromattic
  */
 
+const BASE_URL = import.meta.env.BASE_URL;
+
 export const releases = [
   {
     id: "sunrise",
     title: "Sunrise",
     type: "Single",
     releaseDate: "2025-06-21",
-    coverImage: "/images/covers/sunrise-cover.jpg",
+    coverImage: `${BASE_URL}images/covers/sunrise-cover.jpg`,
     description: "Beluister onze nieuwe single binnenkort!",
     links: [],
   },
@@ -17,7 +19,7 @@ export const releases = [
     title: "Silent Dejection",
     type: "EP",
     releaseDate: "2024-04-26",
-    coverImage: "/images/covers/silent-dejection-cover.jpg",
+    coverImage: `${BASE_URL}images/covers/silent-dejection-cover.jpg`,
     description: "Onze debuut-EP met de tracks Running Away, Alex, Circles en Super Messy.",
     tracks: ["Running Away", "Alex", "Circles", "Super Messy"],
     links: [
@@ -33,7 +35,7 @@ export const releases = [
     title: "Circles",
     type: "Single",
     releaseDate: "2023-08-27",
-    coverImage: "/images/logo.jpg",
+    coverImage: `${BASE_URL}images/logo.jpg`,
     description: "De eerste single van Chromattic – een krachtige introductie tot onze sound.",
     links: [
       {

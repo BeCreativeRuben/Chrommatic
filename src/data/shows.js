@@ -2,12 +2,14 @@
  * Shows data for Chromattic
  */
 
+const BASE_URL = import.meta.env.BASE_URL;
+
 export const shows = [
   { date: "2025-09-20", title: "Pop Is Dead", location: "Sint-Niklaas" },
   { date: "2025-09-13", title: "50 dagen 50 party (Privé)", location: "Temse" },
   { date: "2025-05-03", title: "Sint-Martinus - Piraten-Barbecue", location: "Nieuwkerken-Waas" },
   { date: "2025-04-03", title: "Café Het Damberd", location: "Gent" },
-  { date: "2024-09-21", title: "Pop Is Dead", location: "Sint-Niklaas", image: "/images/shows/pop-is-dead.jpg" },
+  { date: "2024-09-21", title: "Pop Is Dead", location: "Sint-Niklaas", image: `${BASE_URL}images/shows/pop-is-dead.jpg` },
   { date: "2024-08-31", title: "Frater Field Festival (Privé)", location: "Waasmunster" },
   { date: "2024-08-24", title: "Smeulefeesten", location: "Nieuwkerken-Waas" },
   { date: "2024-05-18", title: "Droomland", location: "Nieuwkerken-Waas" },

@@ -2,16 +2,18 @@
  * Centralized image path constants
  */
 
+const BASE_URL = import.meta.env.BASE_URL;
+
 export const IMAGE_PATHS = {
-  logo: "/images/logo.jpg",
+  logo: `${BASE_URL}images/logo.jpg`,
   covers: {
-    sunrise: "/images/covers/sunrise-cover.jpg",
-    silentDejection: "/images/covers/silent-dejection-cover.jpg",
+    sunrise: `${BASE_URL}images/covers/sunrise-cover.jpg`,
+    silentDejection: `${BASE_URL}images/covers/silent-dejection-cover.jpg`,
   },
   shows: {
-    droomballon: "/images/shows/droomballon.jpg",
-    popIsDead: "/images/shows/pop-is-dead.jpg",
-    damberd: "/images/shows/damberd.jpg",
+    droomballon: `${BASE_URL}images/shows/droomballon.jpg`,
+    popIsDead: `${BASE_URL}images/shows/pop-is-dead.jpg`,
+    damberd: `${BASE_URL}images/shows/damberd.jpg`,
   },
 };
 
