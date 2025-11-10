@@ -147,28 +147,6 @@ function Bio() {
           </div>
         </div>
       </div>
-
-      {/* Stats/Highlights Section */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="bg-black/50 rounded-xl p-6 border border-red-900/30 text-center hover:border-red-500/50 transition-all duration-300 hover:transform hover:scale-105">
-          <div className="text-4xl font-bold text-red-400 mb-2">2023</div>
-          <div className="text-gray-300 uppercase tracking-wide text-sm">
-            {language === "nl" ? "Opgericht" : "Formed"}
-          </div>
-        </div>
-        <div className="bg-black/50 rounded-xl p-6 border border-red-900/30 text-center hover:border-red-500/50 transition-all duration-300 hover:transform hover:scale-105">
-          <div className="text-4xl font-bold text-red-400 mb-2">4</div>
-          <div className="text-gray-300 uppercase tracking-wide text-sm">
-            {language === "nl" ? "Leden" : "Members"}
-          </div>
-        </div>
-        <div className="bg-black/50 rounded-xl p-6 border border-red-900/30 text-center hover:border-red-500/50 transition-all duration-300 hover:transform hover:scale-105">
-          <div className="text-4xl font-bold text-red-400 mb-2">2025</div>
-          <div className="text-gray-300 uppercase tracking-wide text-sm">
-            {language === "nl" ? "Debut Album" : "Debut Album"}
-          </div>
-        </div>
-      </div>
     </div>
   );
 }
