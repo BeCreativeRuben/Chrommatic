@@ -37,7 +37,7 @@ function Hero() {
     <div className="min-h-[85vh] sm:min-h-[90vh] flex flex-col justify-center items-center text-center relative overflow-hidden px-4 sm:px-6 md:px-8">
       {/* Background gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-red-900/20 via-black to-black"></div>
-      <div className="absolute inset-0 bg-gradient-radial from-red-900/10 via-transparent to-transparent"></div>
+      <div className="absolute inset-0 bg-gradient-radial from-red-900/10 via-transparent to-transparent" style={{ width: '1250px' }}></div>
       
       {/* Animated background elements - Responsive sizes */}
       <div className="absolute top-10 sm:top-20 left-5 sm:left-10 w-48 h-48 sm:w-72 sm:h-72 bg-red-500/5 rounded-full blur-3xl animate-pulse"></div>

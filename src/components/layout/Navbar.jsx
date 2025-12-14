@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { BRAND } from "../../data/constants";
 import { IMAGE_PATHS } from "../../utils/imagePaths";
+import Flag from "../ui/Flag";
 import { useScrollSpy } from "../../hooks/useScrollSpy";
 import { useLanguage } from "../../contexts/LanguageContext";
 import { translations } from "../../data/translations";
@@ -110,14 +111,13 @@ function Navbar() {
           </a>
           <button
             onClick={toggleLanguage}
-            className="flex items-center gap-2 px-3 py-2 text-sm uppercase tracking-widest font-semibold text-white hover:text-red-400 transition-colors border border-white/20 hover:border-red-400/50 rounded-sm"
+            className="flex items-center justify-center px-3 py-2 text-white hover:opacity-80 transition-opacity border border-white/20 hover:border-red-400/50 rounded-sm"
             aria-label={`Switch to ${language === "nl" ? "English" : "Nederlands"}`}
             title={`Switch to ${language === "nl" ? "English" : "Nederlands"}`}
           >
-            <span className="text-xl">
-              {language === "nl" ? "🇳🇱" : "🇬🇧"}
+            <span className="w-8 h-6 flex items-center justify-center">
+              <Flag country={language === "nl" ? "gb" : "nl"} />
             </span>
-            <span>{language === "nl" ? "EN" : "NL"}</span>
           </button>
         </div>
       </header>
@@ -131,13 +131,12 @@ function Navbar() {
           >
             <button
               onClick={toggleLanguage}
-              className="flex items-center justify-center gap-2 px-4 py-3 text-lg uppercase tracking-widest font-semibold text-white hover:text-red-400 transition-colors border border-white/20 hover:border-red-400/50 rounded-sm mb-4"
+              className="flex items-center justify-center px-4 py-3 text-white hover:opacity-80 transition-opacity border border-white/20 hover:border-red-400/50 rounded-sm mb-4"
               aria-label={`Switch to ${language === "nl" ? "English" : "Nederlands"}`}
             >
-              <span className="text-2xl">
-                {language === "nl" ? "🇳🇱" : "🇬🇧"}
+              <span className="w-10 h-7 flex items-center justify-center">
+                <Flag country={language === "nl" ? "gb" : "nl"} />
               </span>
-              <span>{language === "nl" ? "EN" : "NL"}</span>
             </button>
             {getNavLinks(t).map((link, index) => {
               const isActive = activeSection === link.id;

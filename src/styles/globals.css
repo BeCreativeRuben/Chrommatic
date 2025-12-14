@@ -175,3 +175,13 @@ body {
   animation: youtube-icon-pulse 0.6s ease-in-out;
 }
 
+/* Hero section specific styles */
+#hero {
+  margin: 0;
+  box-sizing: content-box;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
