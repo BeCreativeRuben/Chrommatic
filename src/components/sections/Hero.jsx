@@ -55,9 +55,12 @@ function Hero() {
         </div>
 
         {/* Main Title - Responsive text sizes */}
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4 sm:mb-6 uppercase tracking-wider sm:tracking-widest font-display gradient-text animate-fade-in-delay px-2">
-          {t.title || "CHROMATTIC"}
-        </h1>
+        <div className="mb-4 sm:mb-6 animate-fade-in-delay">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4 sm:mb-6 uppercase tracking-wider sm:tracking-widest font-display gradient-text px-2">
+            {t.title || "CHROMATTIC"}
+          </h1>
+          <div className="w-24 sm:w-32 md:w-40 h-1 bg-gradient-to-r from-transparent via-red-500 to-transparent mx-auto"></div>
+        </div>
 
         {/* Tagline - Responsive text sizes */}
         <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 mb-3 sm:mb-4 font-light tracking-wide animate-fade-in-delay-2 px-2">
