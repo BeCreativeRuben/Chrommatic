@@ -5,10 +5,18 @@
 const BASE_URL = import.meta.env.BASE_URL;
 
 export const shows = [
+  { date: "2025-11-18", title: "Burgies on Stage (VTK)", location: "Gent" },
+  { date: "2025-09-27", title: "Kampvuuravond - Scouts Lede", location: "9340 Lede" },
   { date: "2025-09-20", title: "Pop Is Dead", location: "Sint-Niklaas" },
   { date: "2025-09-13", title: "50 dagen 50 party (Privé)", location: "Temse" },
   { date: "2025-05-03", title: "Sint-Martinus - Piraten-Barbecue", location: "Nieuwkerken-Waas" },
   { date: "2025-04-03", title: "Café Het Damberd", location: "Gent" },
+  {
+    date: "2026-03-12",
+    title: "Charlatan",
+    location: "Gent",
+    ticketsUrl: "https://facebook.com/events/s/early-pedestrian-harvesters/1111353794410132/",
+  },
   { date: "2024-09-21", title: "Pop Is Dead", location: "Sint-Niklaas", image: `${BASE_URL}images/shows/pop-is-dead.jpg` },
   { date: "2024-08-31", title: "Frater Field Festival (Privé)", location: "Waasmunster" },
   { date: "2024-08-24", title: "Smeulefeesten", location: "Nieuwkerken-Waas" },

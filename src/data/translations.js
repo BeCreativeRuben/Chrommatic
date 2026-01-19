@@ -30,6 +30,7 @@ export const translations = {
       upcoming: "Upcoming Shows",
       past: "Past Shows",
       selectYear: "Selecteer jaar",
+      tickets: "Tickets",
       noShows: "Geen shows gevonden voor",
     },
     media: {
@@ -90,6 +91,7 @@ export const translations = {
       upcoming: "Upcoming Shows",
       past: "Past Shows",
       selectYear: "Select year",
+      tickets: "Tickets",
       noShows: "No shows found for",
     },
     media: {

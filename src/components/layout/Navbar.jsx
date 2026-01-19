@@ -12,17 +12,17 @@ import { useLanguage } from "../../contexts/LanguageContext";
 import { translations } from "../../data/translations";
 
 const getNavLinks = (t) => [
+  { href: "#bio", label: t.nav.bio, id: "bio" },
   { href: "#releases", label: t.nav.releases, id: "releases" },
   { href: "#shows", label: t.nav.shows, id: "shows" },
   { href: "#media", label: t.nav.media, id: "media" },
-  { href: "#bio", label: t.nav.bio, id: "bio" },
   { href: "#contact", label: t.nav.contact, id: "contact" },
 ];
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showLogo, setShowLogo] = useState(true); // Toggle between logo and text
-  const sectionIds = ["hero", "releases", "shows", "media", "bio", "contact"];
+  const sectionIds = ["hero", "bio", "releases", "shows", "media", "contact"];
   const activeSection = useScrollSpy(sectionIds);
   const { language, toggleLanguage } = useLanguage();
   const t = translations[language];

@@ -11,7 +11,11 @@ import { translations } from "../../data/translations";
 import { Calendar, MapPin, Clock } from "lucide-react";
 
 function Shows() {
-  const [selectedYear, setSelectedYear] = useState("2025");
+  const allYears = Array.from(new Set(shows.map((s) => getYear(s.date)))).sort((a, b) =>
+    b.localeCompare(a)
+  );
+
+  const [selectedYear, setSelectedYear] = useState(allYears[0] || "2025");
   const { language } = useLanguage();
   const t = translations[language].shows || translations.nl.shows;
 
@@ -21,14 +25,6 @@ function Shows() {
 
   const upcoming = filteredShows.filter((show) => isFutureDate(show.date));
   const past = filteredShows.filter((show) => !isFutureDate(show.date));
-
-  const allYears = Array.from(
-    new Set(shows.map((s) => getYear(s.date)))
-  ).sort((a, b) => b.localeCompare(a));
-
-  const handleYearChange = (e) => {
-    setSelectedYear(e.target.value);
-  };
 
   return (
     <div className="max-w-7xl mx-auto px-4">
@@ -40,37 +36,41 @@ function Shows() {
         <div className="w-24 h-1 bg-gradient-to-r from-transparent via-red-500 to-transparent mx-auto mb-8"></div>
       </div>
 
-      {/* Year Selector - Improved Accessibility */}
+      {/* Year selector - all years visible */}
       <div className="mb-12 flex justify-center">
-        <div className="relative">
-          <label 
-            htmlFor="year-select" 
-            className="block text-sm font-semibold text-gray-300 mb-2 text-center"
-          >
-            {t.selectYear}
-          </label>
-          <div className="relative">
-            <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 text-red-400" size={20} />
-            <select
-              id="year-select"
-              value={selectedYear}
-              onChange={handleYearChange}
-              className="bg-black border-2 border-red-900/50 text-white py-3 pl-10 pr-8 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all appearance-none cursor-pointer hover:border-red-600"
-              aria-label={t.selectYear}
-              aria-describedby="year-select-description"
-            >
-              {allYears.map((year) => (
-                <option key={year} value={year}>
-                  {year}
-                </option>
-              ))}
-            </select>
+        <div className="text-center">
+          <div className="flex items-center justify-center gap-2 mb-4">
+            <Calendar className="text-red-400" size={20} aria-hidden="true" />
+            <p className="text-sm font-semibold text-gray-300">{t.selectYear}</p>
           </div>
-          <span id="year-select-description" className="sr-only">
-            {language === "nl" 
-              ? `Selecteer een jaar om shows te filteren. Huidig geselecteerd: ${selectedYear}`
-              : `Select a year to filter shows. Currently selected: ${selectedYear}`}
-          </span>
+
+          <div
+            className="flex flex-wrap justify-center gap-2"
+            role="radiogroup"
+            aria-label={t.selectYear}
+          >
+            {allYears.map((year) => {
+              const isSelected = year === selectedYear;
+              return (
+                <button
+                  key={year}
+                  type="button"
+                  onClick={() => setSelectedYear(year)}
+                  role="radio"
+                  aria-checked={isSelected}
+                  className={[
+                    "px-5 py-2 rounded-full border text-sm font-semibold tracking-wide transition-all",
+                    "focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-black",
+                    isSelected
+                      ? "bg-red-600 border-red-500 text-white shadow-lg shadow-red-900/40"
+                      : "bg-black/40 border-red-900/50 text-gray-300 hover:border-red-600 hover:text-white",
+                  ].join(" ")}
+                >
+                  {year}
+                </button>
+              );
+            })}
+          </div>
         </div>
       </div>
 
@@ -127,6 +127,24 @@ function Shows() {
                           </div>
                         </div>
                       </div>
+
+                      {show.ticketsUrl && (
+                        <div className="md:flex-shrink-0">
+                          <a
+                            href={show.ticketsUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-red-600 to-red-800 text-white font-bold uppercase tracking-widest text-sm rounded-sm hover:from-red-500 hover:to-red-700 transform hover:scale-105 transition-all duration-300 shadow-lg shadow-red-900/50 hover:shadow-red-500/50 w-full md:w-auto"
+                            aria-label={
+                              language === "nl"
+                                ? `Tickets voor ${show.title} op ${formatDate(show.date)}`
+                                : `Tickets for ${show.title} on ${formatDate(show.date)}`
+                            }
+                          >
+                            {t.tickets || "Tickets"}
+                          </a>
+                        </div>
+                      )}
                     </div>
                   </article>
                 </li>

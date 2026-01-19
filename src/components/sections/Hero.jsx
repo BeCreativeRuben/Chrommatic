@@ -91,10 +91,11 @@ function Hero() {
           </button>
         </div>
 
-        {/* Scroll indicator - Responsive positioning */}
-        <div className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <ArrowDown className="text-gray-400 w-5 h-5 sm:w-6 sm:h-6" />
-        </div>
+      </div>
+
+      {/* Scroll indicator - centered relative to full hero width */}
+      <div className="absolute inset-x-0 bottom-4 sm:bottom-8 flex justify-center animate-bounce pointer-events-none">
+        <ArrowDown className="text-gray-400 w-5 h-5 sm:w-6 sm:h-6" aria-hidden="true" />
       </div>
     </div>
   );
