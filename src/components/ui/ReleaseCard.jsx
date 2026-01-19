@@ -47,19 +47,6 @@ function ReleaseCard({ release }) {
         {/* Primary buttons */}
         {(spotifyLink || youtubeLink || appleMusicLink) && (
           <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 mt-6">
-            {spotifyLink && (
-              <a
-                href={spotifyLink.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="spotify-button flex-1 min-w-[160px] flex items-center justify-center gap-2 px-6 py-3 bg-[#1DB954] hover:bg-[#1ed760] text-white font-bold uppercase tracking-widest text-sm rounded-sm transform hover:scale-105 transition-all duration-300 shadow-lg shadow-[#1DB954]/50 hover:shadow-[#1ed760]/50 relative overflow-hidden group"
-                aria-label={`Beluister ${title} op Spotify`}
-              >
-                <Music2 size={20} className="spotify-icon transition-transform duration-300 group-hover:rotate-12" />
-                <span className="relative z-10">Spotify</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-              </a>
-            )}
             {youtubeLink && (
               <a
                 href={youtubeLink.url}
@@ -84,6 +71,19 @@ function ReleaseCard({ release }) {
                 <Apple size={20} className="apple-icon transition-transform duration-300 group-hover:-rotate-6" />
                 <span className="relative z-10">Apple Music</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+              </a>
+            )}
+            {spotifyLink && (
+              <a
+                href={spotifyLink.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="spotify-button flex-1 min-w-[160px] flex items-center justify-center gap-2 px-6 py-3 bg-[#1DB954] hover:bg-[#1ed760] text-white font-bold uppercase tracking-widest text-sm rounded-sm transform hover:scale-105 transition-all duration-300 shadow-lg shadow-[#1DB954]/50 hover:shadow-[#1ed760]/50 relative overflow-hidden group"
+                aria-label={`Beluister ${title} op Spotify`}
+              >
+                <Music2 size={20} className="spotify-icon transition-transform duration-300 group-hover:rotate-12" />
+                <span className="relative z-10">Spotify</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
               </a>
             )}
           </div>
