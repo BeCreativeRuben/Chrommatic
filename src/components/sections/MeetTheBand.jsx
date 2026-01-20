@@ -13,15 +13,15 @@ const members = [
     name: "Tijl",
     roles: {
       nl: "Leadzanger & Bassist",
-      en: "Lead vocalist & bassist",
+      en: "Lead Vocalist & Bassist",
     },
     imageFile: "fotoshoot tijl.jpg",
   },
   {
     name: "Nand",
     roles: {
-      nl: "Gitarist",
-      en: "Guitarist",
+      nl: "Gitarist, Producer",
+      en: "Guitarist, Producer",
     },
     imageFile: "fotoshoot nand.jpg",
   },
@@ -29,7 +29,7 @@ const members = [
     name: "Joeri",
     roles: {
       nl: "Gitarist, Backing vocalist & Keyboard",
-      en: "Guitarist, backing vocalist & keys",
+      en: "Guitarist, Backing Vocalist & Keyboard",
     },
     imageFile: "fotoshoot joeri.jpg",
   },
