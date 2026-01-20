@@ -27,6 +27,7 @@ function Navbar() {
   const activeSection = useScrollSpy(sectionIds);
   const { language, toggleLanguage } = useLanguage();
   const t = translations[language];
+  const nextLanguageLabel = language === "nl" ? "EN" : "NL";
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
@@ -112,12 +113,15 @@ function Navbar() {
           </a>
           <button
             onClick={toggleLanguage}
-            className="flex items-center justify-center px-3 py-2 text-white hover:opacity-80 transition-opacity border border-white/20 hover:border-red-400/50 rounded-sm"
+            className="flex items-center justify-center gap-2 px-3 py-2 text-white hover:opacity-90 transition-all border border-white/20 hover:border-red-400/50 rounded-sm bg-black/30 hover:bg-black/40"
             aria-label={`Switch to ${language === "nl" ? "English" : "Nederlands"}`}
             title={`Switch to ${language === "nl" ? "English" : "Nederlands"}`}
           >
-            <span className="w-8 h-6 flex items-center justify-center">
+            <span className="w-8 h-6 flex items-center justify-center" aria-hidden="true">
               <Flag country={language === "nl" ? "gb" : "nl"} />
+            </span>
+            <span className="text-xs font-bold tracking-widest border border-white/15 bg-black/50 px-2 py-1 rounded-sm">
+              {nextLanguageLabel}
             </span>
           </button>
         </div>
@@ -132,11 +136,14 @@ function Navbar() {
           >
             <button
               onClick={toggleLanguage}
-              className="flex items-center justify-center px-4 py-3 text-white hover:opacity-80 transition-opacity border border-white/20 hover:border-red-400/50 rounded-sm mb-4"
+              className="flex items-center justify-center gap-3 px-4 py-3 text-white hover:opacity-90 transition-all border border-white/20 hover:border-red-400/50 rounded-sm mb-4 bg-black/30 hover:bg-black/40"
               aria-label={`Switch to ${language === "nl" ? "English" : "Nederlands"}`}
             >
-              <span className="w-10 h-7 flex items-center justify-center">
+              <span className="w-10 h-7 flex items-center justify-center" aria-hidden="true">
                 <Flag country={language === "nl" ? "gb" : "nl"} />
+              </span>
+              <span className="text-sm font-bold tracking-widest border border-white/15 bg-black/50 px-3 py-1 rounded-sm">
+                {nextLanguageLabel}
               </span>
             </button>
             {getNavLinks(t).map((link, index) => {

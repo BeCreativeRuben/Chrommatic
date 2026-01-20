@@ -4,6 +4,7 @@
 
 import { useLanguage } from "../../contexts/LanguageContext";
 import { translations } from "../../data/translations";
+import LazyImage from "../ui/LazyImage";
 
 const BASE_URL = import.meta.env.BASE_URL;
 
@@ -11,8 +12,8 @@ const members = [
   {
     name: "Tijl",
     roles: {
-      nl: "Leadzanger & Gitarist",
-      en: "Lead vocalist & guitarist",
+      nl: "Leadzanger & Bassist",
+      en: "Lead vocalist & bassist",
     },
     imageFile: "fotoshoot tijl.jpg",
   },
@@ -27,8 +28,8 @@ const members = [
   {
     name: "Joeri",
     roles: {
-      nl: "Zanger, Gitarist & Keyboard",
-      en: "Vocalist, guitarist & keys",
+      nl: "Gitarist, Backing vocalist & Keyboard",
+      en: "Guitarist, backing vocalist & keys",
     },
     imageFile: "fotoshoot joeri.jpg",
   },
@@ -74,7 +75,7 @@ function MeetTheBand() {
               className="group bg-black/50 rounded-2xl overflow-hidden border border-red-900/30 shadow-2xl hover:border-red-500/50 transition-all duration-300 hover:transform hover:scale-[1.02]"
             >
               <div className="relative aspect-square overflow-hidden">
-                <img
+                <LazyImage
                   src={src}
                   alt={`${m.name} - Chromattic`}
                   className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"

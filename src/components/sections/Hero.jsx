@@ -6,10 +6,12 @@ import { IMAGE_PATHS } from "../../utils/imagePaths";
 import { useLanguage } from "../../contexts/LanguageContext";
 import { translations } from "../../data/translations";
 import { ArrowDown, Calendar } from "lucide-react";
+import { useLightbox } from "../../contexts/LightboxContext";
 
 function Hero() {
   const { language } = useLanguage();
   const t = translations[language].hero || translations.nl.hero;
+  const { open } = useLightbox();
 
   const handleScrollToContact = (e) => {
     e.preventDefault();
@@ -49,8 +51,17 @@ function Hero() {
           <img
             src={IMAGE_PATHS.logo}
             alt="Chromattic logo"
-            className="w-48 sm:w-56 md:w-64 lg:w-80 h-auto mx-auto logo-metallic mb-4 sm:mb-6"
+            className="w-48 sm:w-56 md:w-64 lg:w-80 h-auto mx-auto logo-metallic mb-4 sm:mb-6 cursor-zoom-in"
             loading="eager"
+            role="button"
+            tabIndex={0}
+            onClick={() => open({ src: IMAGE_PATHS.logo, alt: "Chromattic logo" })}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                open({ src: IMAGE_PATHS.logo, alt: "Chromattic logo" });
+              }
+            }}
           />
         </div>
 

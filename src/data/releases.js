@@ -11,7 +11,10 @@ export const releases = [
     type: "Single",
     releaseDate: "2025-10-24",
     coverImage: `${BASE_URL}images/covers/shit-cover.jpg`,
-    description: "Nieuwe single — beluister ‘m nu!",
+    description: {
+      nl: "Onze scherpste single tot nu toe — zet ‘m luid.",
+      en: "Our sharpest single yet — play it loud.",
+    },
     links: [
       {
         platform: "Spotify",
@@ -36,7 +39,10 @@ export const releases = [
     type: "Single",
     releaseDate: "2025-08-18",
     coverImage: `${BASE_URL}images/covers/walk-of-death-cover.jpg`,
-    description: "Nieuwe single — beluister ‘m nu!",
+    description: {
+      nl: "Rauw, snel en donker — pure Chromattic energie.",
+      en: "Raw, fast and dark — pure Chromattic energy.",
+    },
     links: [
       {
         platform: "Spotify",
@@ -61,7 +67,10 @@ export const releases = [
     type: "Single",
     releaseDate: "2025-07-11",
     coverImage: `${BASE_URL}images/covers/alex-cover.jpg`,
-    description: "Nieuwe single — beluister ‘m nu!",
+    description: {
+      nl: "Een meezingbare track met punch — klaar voor repeat.",
+      en: "A sing-along track with punch — made for repeat.",
+    },
     links: [
       {
         platform: "Spotify",
@@ -86,7 +95,10 @@ export const releases = [
     type: "Single",
     releaseDate: "2025-06-21",
     coverImage: `${BASE_URL}images/covers/sunrise-cover.jpg`,
-    description: "Sunrise is uit — beluister ‘m nu!",
+    description: {
+      nl: "Sunrise is uit — laat ‘m binnenkomen.",
+      en: "Sunrise is out now — let it hit.",
+    },
     links: [
       {
         platform: "Spotify",
@@ -111,7 +123,10 @@ export const releases = [
     type: "EP",
     releaseDate: "2024-04-26",
     coverImage: `${BASE_URL}images/covers/silent-dejection-cover.jpg`,
-    description: "Onze debuut-EP met de tracks Running Away, Alex, Circles en Super Messy.",
+    description: {
+      nl: "Onze debuut-EP met Running Away, Alex, Circles en Super Messy.",
+      en: "Our debut EP featuring Running Away, Alex, Circles and Super Messy.",
+    },
     tracks: ["Running Away", "Alex", "Circles", "Super Messy"],
     links: [
       {
@@ -137,7 +152,10 @@ export const releases = [
     type: "Single",
     releaseDate: "2023-08-27",
     coverImage: `${BASE_URL}images/logo.jpg`,
-    description: "De eerste single van Chromattic – een krachtige introductie tot onze sound.",
+    description: {
+      nl: "Onze eerste single — een krachtige introductie tot onze sound.",
+      en: "Our first single — a punchy introduction to our sound.",
+    },
     links: [
       {
         platform: "Spotify",
@@ -158,7 +176,7 @@ export const releases = [
         platform: "YouTube Video",
         url: "https://www.youtube.com/watch?v=g9ULqy29kZw",
         color: "red-400",
-        label: "Bekijk de videoclip",
+        label: { nl: "Bekijk de videoclip", en: "Watch the video" },
       },
     ],
   },

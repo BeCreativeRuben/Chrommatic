@@ -6,6 +6,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import LazyImage from "./LazyImage";
 
 function clampIndex(next, length) {
   if (length <= 0) return 0;
@@ -141,7 +142,7 @@ function CarouselContinuous({ images, className = "", marqueeDurationMs = 40000 
                 className="flex-none h-full rounded-xl overflow-hidden border border-red-900/30 bg-black/60 shadow-lg"
                 style={{ width: layout.cardWidthPx || undefined }}
               >
-                <img
+                <LazyImage
                   src={img?.src}
                   alt={img?.alt || "Carousel image"}
                   className="w-full h-full object-cover"
@@ -321,7 +322,7 @@ function CarouselStep({ images, className = "", autoAdvanceMs = 7000 }) {
                 ref={i === 0 ? firstRef : i === 1 ? secondRef : undefined}
                 className="flex-none w-full sm:w-[48%] lg:w-[32%] h-full rounded-xl overflow-hidden border border-red-900/30 bg-black/60 shadow-lg"
               >
-                <img
+                <LazyImage
                   src={img?.src}
                   alt={img?.alt || "Carousel image"}
                   className="w-full h-full object-cover"

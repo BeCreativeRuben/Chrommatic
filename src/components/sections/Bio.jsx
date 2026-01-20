@@ -6,6 +6,7 @@ import { IMAGE_PATHS } from "../../utils/imagePaths";
 import { useLanguage } from "../../contexts/LanguageContext";
 import { translations } from "../../data/translations";
 import { Music, Users, Calendar, TrendingUp } from "lucide-react";
+import LazyImage from "../ui/LazyImage";
 
 function Bio() {
   const { language } = useLanguage();
@@ -47,7 +48,7 @@ function Bio() {
         <div className="bg-gradient-to-r from-black via-red-950/50 to-black rounded-2xl overflow-hidden border border-red-800/30 shadow-xl">
           <div className="flex flex-col lg:flex-row">
             <div className="lg:w-1/2">
-              <img
+              <LazyImage
                 src={IMAGE_PATHS.shows.droomballon}
                 alt="Chromattic live @ Droomland"
                 className="w-full h-full object-cover"
@@ -86,7 +87,7 @@ function Bio() {
         <div className="bg-gradient-to-l from-black via-red-950/50 to-black rounded-2xl overflow-hidden border border-red-800/30 shadow-xl">
           <div className="flex flex-col lg:flex-row-reverse">
             <div className="lg:w-1/2">
-              <img
+              <LazyImage
                 src={IMAGE_PATHS.shows.popIsDead}
                 alt="Chromattic @ Pop Is Dead"
                 className="w-full h-full object-cover"
@@ -129,7 +130,7 @@ function Bio() {
             </div>
             <div className="flex flex-col lg:flex-row gap-8 items-center">
               <div className="lg:w-1/2">
-                <img
+                <LazyImage
                   src={IMAGE_PATHS.shows.damberd}
                   alt="Chromattic @ Damberd"
                   className="w-full rounded-lg shadow-xl border-2 border-red-600/30"

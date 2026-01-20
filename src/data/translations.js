@@ -6,12 +6,12 @@ export const translations = {
   nl: {
     nav: {
       releases: "Releases",
-      shows: "Shows",
+      shows: "Optredens",
       media: "Media",
       bio: "Bio",
-      meetTheBand: "The Band",
+      meetTheBand: "De Band",
       contact: "Contact",
-      bookNow: "Book Now",
+      bookNow: "Boek Nu",
     },
     hero: {
       title: "CHROMATTIC",
@@ -28,8 +28,8 @@ export const translations = {
     },
     shows: {
       title: "Shows",
-      upcoming: "Upcoming Shows",
-      past: "Past Shows",
+      upcoming: "Aankomende shows",
+      past: "Vorige shows",
       selectYear: "Selecteer jaar",
       tickets: "Tickets",
       highlights: "Highlights",
@@ -44,7 +44,7 @@ export const translations = {
       description: "Bekijk hier onze officiële videoclip van",
     },
     meetTheBand: {
-      title: "The Band",
+      title: "De Band",
       subtitle: "De leden van Chromattic.",
     },
     bio: {
