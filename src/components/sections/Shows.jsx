@@ -2,13 +2,23 @@
  * Shows section component - Redesigned with improved visuals and accessibility
  */
 
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { shows } from "../../data/shows";
 import { BRAND } from "../../data/constants";
 import { getYear, isFutureDate, formatDate } from "../../utils/dateFormatter";
 import { useLanguage } from "../../contexts/LanguageContext";
 import { translations } from "../../data/translations";
 import { Calendar, MapPin, Clock } from "lucide-react";
+import Carousel from "../ui/Carousel";
+import { allCarouselImages } from "../../data/carrouselImages";
+
+function getShowKey(show) {
+  return `${show?.date || ""}::${show?.title || ""}`;
+}
+
+function hasShowDetails(show) {
+  return Boolean(show?.venue || show?.area || show?.durationMinutes || show?.galleryTag);
+}
 
 function Shows() {
   const allYears = Array.from(new Set(shows.map((s) => getYear(s.date)))).sort((a, b) =>
@@ -16,6 +26,7 @@ function Shows() {
   );
 
   const [selectedYear, setSelectedYear] = useState(allYears[0] || "2025");
+  const [selectedShowKey, setSelectedShowKey] = useState(null);
   const { language } = useLanguage();
   const t = translations[language].shows || translations.nl.shows;
 
@@ -25,6 +36,56 @@ function Shows() {
 
   const upcoming = filteredShows.filter((show) => isFutureDate(show.date));
   const past = filteredShows.filter((show) => !isFutureDate(show.date));
+
+  useEffect(() => {
+    setSelectedShowKey(null);
+  }, [selectedYear]);
+
+  const selectedShow = useMemo(() => {
+    if (!selectedShowKey) return null;
+    return filteredShows.find((s) => getShowKey(s) === selectedShowKey) || null;
+  }, [filteredShows, selectedShowKey]);
+
+  const selectedShowGalleryImages = useMemo(() => {
+    if (!selectedShow?.galleryTag) return [];
+    const tag = String(selectedShow.galleryTag).toLowerCase();
+    return allCarouselImages.filter((img) => String(img?.alt || "").toLowerCase().startsWith(tag));
+  }, [selectedShow]);
+
+  // Keep the details centered as a modal (no scroll-jump)
+  useEffect(() => {
+    if (!selectedShow) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const onKeyDown = (e) => {
+      if (e.key === "Escape") setSelectedShowKey(null);
+    };
+    window.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [selectedShow]);
+
+  const openDetails = (show) => {
+    const key = getShowKey(show);
+    setSelectedShowKey(key);
+  };
+
+  const closeDetails = () => setSelectedShowKey(null);
+
+  const formatDuration = (minutes) => {
+    if (!minutes) return "";
+    if (language === "nl") {
+      if (minutes === 60) return "1 uur";
+      return `${minutes} min`;
+    }
+    if (minutes === 60) return "1 hour";
+    return `${minutes} min`;
+  };
 
   return (
     <div className="max-w-7xl mx-auto px-4">
@@ -74,6 +135,105 @@ function Shows() {
         </div>
       </div>
 
+      {/* Details modal (centered overlay) */}
+      {selectedShow && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center px-4 py-6">
+          {/* Backdrop */}
+          <button
+            type="button"
+            className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+            onClick={closeDetails}
+            aria-label={language === "nl" ? "Sluiten" : "Close"}
+          />
+
+          {/* Modal */}
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="show-details-title"
+            className="relative w-full max-w-5xl max-h-[85vh] overflow-y-auto bg-gradient-to-br from-red-900/30 via-black to-black rounded-2xl p-6 sm:p-8 md:p-10 border border-red-900/50 shadow-2xl"
+          >
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-8">
+              <div>
+                <h3
+                  id="show-details-title"
+                  className="text-3xl md:text-4xl font-bold text-white uppercase tracking-widest font-display mb-2"
+                >
+                  {selectedShow.title}
+                </h3>
+                <p className="text-gray-300 flex items-center gap-3 flex-wrap">
+                  <span className="inline-flex items-center gap-2">
+                    <Calendar size={18} className="text-red-400" aria-hidden="true" />
+                    {formatDate(selectedShow.date)}
+                  </span>
+                  <span className="text-gray-600">•</span>
+                  <span className="inline-flex items-center gap-2">
+                    <MapPin size={18} className="text-red-400" aria-hidden="true" />
+                    {selectedShow.location}
+                    {selectedShow.venue ? `, ${selectedShow.venue}` : ""}
+                    {selectedShow.area ? `, ${selectedShow.area}` : ""}, {BRAND.country}
+                  </span>
+                  {selectedShow.durationMinutes ? (
+                    <>
+                      <span className="text-gray-600">•</span>
+                      <span className="inline-flex items-center gap-2">
+                        <Clock size={18} className="text-red-400" aria-hidden="true" />
+                        {t.duration}: {formatDuration(selectedShow.durationMinutes)}
+                      </span>
+                    </>
+                  ) : null}
+                </p>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <button
+                  type="button"
+                  onClick={closeDetails}
+                  className="px-6 py-3 bg-black/40 hover:bg-black/60 border border-red-900/40 hover:border-red-500/60 text-white font-bold uppercase tracking-widest text-sm rounded-sm transition-all duration-300"
+                >
+                  {t.backToList}
+                </button>
+              </div>
+            </div>
+
+            <div className="grid lg:grid-cols-2 gap-10">
+              <div className="text-left">
+                <h4 className="text-2xl font-bold mb-4 uppercase tracking-widest font-display text-red-400">
+                  {t.highlights}
+                </h4>
+                <ul className="space-y-3 text-gray-300">
+                  <li className="flex items-start gap-3">
+                    <span className="mt-1 w-2 h-2 rounded-full bg-red-500 flex-shrink-0"></span>
+                    <span>
+                      {t.location}: {selectedShow.location}
+                      {selectedShow.venue ? `, ${selectedShow.venue}` : ""}
+                      {selectedShow.area ? `, ${selectedShow.area}` : ""} ({BRAND.country})
+                    </span>
+                  </li>
+                  {selectedShow.durationMinutes ? (
+                    <li className="flex items-start gap-3">
+                      <span className="mt-1 w-2 h-2 rounded-full bg-red-500 flex-shrink-0"></span>
+                      <span>
+                        {t.duration}: {formatDuration(selectedShow.durationMinutes)}
+                      </span>
+                    </li>
+                  ) : null}
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="text-2xl font-bold mb-4 uppercase tracking-widest font-display text-red-400 text-left">
+                  {t.photos}
+                </h4>
+                <Carousel images={selectedShowGalleryImages} autoAdvanceMs={4500} />
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* List view */}
+      <>
       {/* Upcoming Shows Section */}
       {upcoming.length > 0 && (
         <section 
@@ -103,12 +263,12 @@ function Shows() {
                     tabIndex={0}
                     aria-label={`${language === "nl" ? "Show" : "Show"}: ${show.title} op ${formatDate(show.date)} in ${show.location}`}
                   >
-                    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                      <div className="flex items-start gap-4 flex-1">
+                    <div className="relative">
+                      <div className="flex items-start gap-4 justify-center">
                         <div className="p-2 bg-red-900/50 rounded-lg flex-shrink-0">
                           <Calendar className="text-red-400" size={20} />
                         </div>
-                        <div className="flex-1">
+                        <div className="flex-1 max-w-2xl">
                           <time 
                             dateTime={show.date}
                             className="block text-lg font-semibold text-white mb-2"
@@ -119,7 +279,7 @@ function Shows() {
                           <h4 className="text-xl font-bold text-white mb-2">
                             {show.title}
                           </h4>
-                          <div className="flex items-center gap-2 text-gray-300">
+                          <div className="flex items-center justify-center gap-2 text-gray-300">
                             <MapPin size={16} className="text-red-400" aria-hidden="true" />
                             <address className="not-italic">
                               {show.location}, {BRAND.country}
@@ -128,21 +288,32 @@ function Shows() {
                         </div>
                       </div>
 
-                      {show.ticketsUrl && (
-                        <div className="md:flex-shrink-0">
-                          <a
-                            href={show.ticketsUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-red-600 to-red-800 text-white font-bold uppercase tracking-widest text-sm rounded-sm hover:from-red-500 hover:to-red-700 transform hover:scale-105 transition-all duration-300 shadow-lg shadow-red-900/50 hover:shadow-red-500/50 w-full md:w-auto"
-                            aria-label={
-                              language === "nl"
-                                ? `Tickets voor ${show.title} op ${formatDate(show.date)}`
-                                : `Tickets for ${show.title} on ${formatDate(show.date)}`
-                            }
-                          >
-                            {t.tickets || "Tickets"}
-                          </a>
+                      {(show.ticketsUrl || hasShowDetails(show)) && (
+                        <div className="mt-6 md:mt-0 md:absolute md:right-0 md:top-1/2 md:-translate-y-1/2 flex flex-col gap-3 w-full md:w-auto">
+                          {show.ticketsUrl && (
+                            <a
+                              href={show.ticketsUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-red-600 to-red-800 text-white font-bold uppercase tracking-widest text-sm rounded-sm hover:from-red-500 hover:to-red-700 transform hover:scale-105 transition-all duration-300 shadow-lg shadow-red-900/50 hover:shadow-red-500/50 w-full md:w-auto"
+                              aria-label={
+                                language === "nl"
+                                  ? `Tickets voor ${show.title} op ${formatDate(show.date)}`
+                                  : `Tickets for ${show.title} on ${formatDate(show.date)}`
+                              }
+                            >
+                              {t.tickets || "Tickets"}
+                            </a>
+                          )}
+                          {hasShowDetails(show) && (
+                            <button
+                              type="button"
+                              onClick={() => openDetails(show)}
+                              className="inline-flex items-center justify-center px-6 py-3 bg-black/40 hover:bg-black/60 border border-red-900/40 hover:border-red-500/60 text-white font-bold uppercase tracking-widest text-sm rounded-sm transition-all duration-300 w-full md:w-auto"
+                            >
+                              {t.highlights}
+                            </button>
+                          )}
                         </div>
                       )}
                     </div>
@@ -183,12 +354,12 @@ function Shows() {
                     tabIndex={0}
                     aria-label={`${language === "nl" ? "Show" : "Show"}: ${show.title} op ${formatDate(show.date)} in ${show.location}`}
                   >
-                    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                      <div className="flex items-start gap-4 flex-1">
+                    <div className="relative">
+                      <div className="flex items-start gap-4 justify-center">
                         <div className="p-2 bg-red-900/50 rounded-lg flex-shrink-0">
                           <Calendar className="text-red-400" size={20} />
                         </div>
-                        <div className="flex-1">
+                        <div className="flex-1 max-w-2xl">
                           <time 
                             dateTime={show.date}
                             className="block text-lg font-semibold text-white mb-2"
@@ -199,7 +370,7 @@ function Shows() {
                           <h4 className="text-xl font-bold text-white mb-2">
                             {show.title}
                           </h4>
-                          <div className="flex items-center gap-2 text-gray-300">
+                          <div className="flex items-center justify-center gap-2 text-gray-300">
                             <MapPin size={16} className="text-red-400" aria-hidden="true" />
                             <address className="not-italic">
                               {show.location}, {BRAND.country}
@@ -207,6 +378,18 @@ function Shows() {
                           </div>
                         </div>
                       </div>
+
+                      {hasShowDetails(show) && (
+                        <div className="mt-6 md:mt-0 md:absolute md:right-0 md:top-1/2 md:-translate-y-1/2">
+                          <button
+                            type="button"
+                            onClick={() => openDetails(show)}
+                            className="inline-flex items-center justify-center px-6 py-3 bg-black/40 hover:bg-black/60 border border-red-900/40 hover:border-red-500/60 text-white font-bold uppercase tracking-widest text-sm rounded-sm transition-all duration-300 w-full md:w-auto"
+                          >
+                            {t.highlights}
+                          </button>
+                        </div>
+                      )}
                     </div>
                   </article>
                 </li>
@@ -230,6 +413,7 @@ function Shows() {
           </p>
         </div>
       )}
+      </>
     </div>
   );
 }

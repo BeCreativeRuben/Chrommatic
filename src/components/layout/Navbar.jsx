@@ -16,13 +16,14 @@ const getNavLinks = (t) => [
   { href: "#releases", label: t.nav.releases, id: "releases" },
   { href: "#shows", label: t.nav.shows, id: "shows" },
   { href: "#media", label: t.nav.media, id: "media" },
+  { href: "#meet-the-band", label: t.nav.meetTheBand, id: "meet-the-band" },
   { href: "#contact", label: t.nav.contact, id: "contact" },
 ];
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showLogo, setShowLogo] = useState(true); // Toggle between logo and text
-  const sectionIds = ["hero", "bio", "releases", "shows", "media", "contact"];
+  const sectionIds = ["hero", "bio", "releases", "shows", "media", "meet-the-band", "contact"];
   const activeSection = useScrollSpy(sectionIds);
   const { language, toggleLanguage } = useLanguage();
   const t = translations[language];

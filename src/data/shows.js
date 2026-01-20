@@ -5,9 +5,16 @@
 const BASE_URL = import.meta.env.BASE_URL;
 
 export const shows = [
-  { date: "2025-11-18", title: "Burgies on Stage (VTK)", location: "Gent" },
+  {
+    date: "2025-11-18",
+    title: "Burgies on Stage (VTK)",
+    location: "Gent",
+    venue: "Delta Club",
+    area: "Overpoort",
+    durationMinutes: 60,
+    galleryTag: "burgies on stage",
+  },
   { date: "2025-09-27", title: "Kampvuuravond - Scouts Lede", location: "9340 Lede" },
-  { date: "2025-09-20", title: "Pop Is Dead", location: "Sint-Niklaas" },
   { date: "2025-09-13", title: "50 dagen 50 party (Privé)", location: "Temse" },
   { date: "2025-05-03", title: "Sint-Martinus - Piraten-Barbecue", location: "Nieuwkerken-Waas" },
   { date: "2025-04-03", title: "Café Het Damberd", location: "Gent" },

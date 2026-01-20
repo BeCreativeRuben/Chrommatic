@@ -9,6 +9,7 @@ import Hero from "./components/sections/Hero";
 import Releases from "./components/sections/Releases";
 import Shows from "./components/sections/Shows";
 import Media from "./components/sections/Media";
+import MeetTheBand from "./components/sections/MeetTheBand";
 import Bio from "./components/sections/Bio";
 import Contact from "./components/sections/Contact";
 
@@ -35,6 +36,10 @@ function App() {
 
       <Section id="media">
         <Media />
+      </Section>
+
+      <Section id="meet-the-band" alternate>
+        <MeetTheBand />
       </Section>
 
       <Section id="contact">
