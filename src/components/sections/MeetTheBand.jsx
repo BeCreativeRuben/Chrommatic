@@ -20,8 +20,8 @@ const members = [
   {
     name: "Nand",
     roles: {
-      nl: "Gitarist, Producer",
-      en: "Guitarist, Producer",
+      nl: "Gitarist, Audio Engineer",
+      en: "Guitarist, Audio Engineer",
     },
     imageFile: "fotoshoot nand.jpg",
   },
