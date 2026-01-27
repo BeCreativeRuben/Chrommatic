@@ -265,7 +265,7 @@ function Shows() {
                   >
                     <div className="relative">
                       <div className="flex items-start gap-4 justify-center">
-                        <div className="p-2 bg-red-900/50 rounded-lg flex-shrink-0">
+                        <div className="p-2 bg-red-900/50 rounded-lg flex-shrink-0 self-center">
                           <Calendar className="text-red-400" size={20} />
                         </div>
                         <div className="flex-1 max-w-2xl">
@@ -356,7 +356,7 @@ function Shows() {
                   >
                     <div className="relative">
                       <div className="flex items-start gap-4 justify-center">
-                        <div className="p-2 bg-red-900/50 rounded-lg flex-shrink-0">
+                        <div className="p-2 bg-red-900/50 rounded-lg flex-shrink-0 self-center">
                           <Calendar className="text-red-400" size={20} />
                         </div>
                         <div className="flex-1 max-w-2xl">
