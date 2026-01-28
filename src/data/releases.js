@@ -40,8 +40,8 @@ export const releases = [
     releaseDate: "2025-08-18",
     coverImage: `${BASE_URL}images/covers/walk-of-death-cover.jpg`,
     description: {
-      nl: "Het contrast tussen rustige strofes en stevige refreinen geeft het nummer een opbouw naar een donkere climax.",
-      en: "The contrast between quiet verses and powerful choruses builds the track toward a dark climax.",
+      nl: "Het contrast tussen rustige strofes en stevige refreinen geeft het nummer een sterke opbouw naar een donkere climax.",
+      en: "The contrast between quiet verses and powerful choruses gives the track a strong build-up toward a dark climax.",
     },
     links: [
       {
@@ -96,8 +96,8 @@ export const releases = [
     releaseDate: "2025-06-21",
     coverImage: `${BASE_URL}images/covers/sunrise-cover.jpg`,
     description: {
-      nl: "Met het hogere tempo en virtuose solo toont dit nummer een zwaardere en technischere kant van de band.",
-      en: "With its higher tempo and virtuoso solo, this track shows a heavier and more technical side of the band.",
+      nl: "Met het hogere tempo en epische solo toont dit nummer een zwaardere en technischere kant van de band.",
+      en: "With its higher tempo and epic solo, this track shows a heavier and more technical side of the band.",
     },
     links: [
       {
