@@ -67,7 +67,7 @@ export const translations = {
       description: "Schrijf je in voor onze nieuwsbrief en mis geen nieuwe releases of shows!",
       placeholder: "Je e-mailadres",
       subscribe: "Inschrijven",
-      success: "Bedankt voor je inschrijving!",
+      success: "Je bent ingeschreven voor de nieuwsbrief! Dankjewel!",
       error: "Er ging iets mis. Probeer het opnieuw.",
     },
     footer: {
@@ -138,7 +138,7 @@ export const translations = {
       description: "Subscribe to our newsletter and don't miss any new releases or shows!",
       placeholder: "Your email address",
       subscribe: "Subscribe",
-      success: "Thanks for subscribing!",
+      success: "You are subscribed to the newsletter! Thank you!",
       error: "Something went wrong. Please try again.",
     },
     footer: {

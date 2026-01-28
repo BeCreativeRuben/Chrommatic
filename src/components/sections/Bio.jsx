@@ -35,8 +35,8 @@ function Bio() {
               </h3>
               <p className="text-lg leading-relaxed text-gray-200">
                 {language === "nl" 
-                  ? "Chromattic is een alternatieve rockband uit het Waasland die de nostalgie van 2000's poppunk mengt met moderne sounds. Sinds hun ontstaan begin 2023 heeft het viertal een indrukwekkend parcours afgelegd: optredens in iconische cafés en jeugdhuizen, een debuutsingle, een stevige EP en binnenkort zelfs een volledig album. De band bestaat uit vier jeugdvrienden die al jaren samen muziek maken, wat duidelijk voelbaar is in hun energieke live-shows en hechte groepsdynamiek."
-                  : "Chromattic is an alternative rock band from the Waasland region that blends the nostalgia of 2000's pop punk with modern sounds. Since their formation in early 2023, the quartet has had an impressive journey: performances in iconic cafes and youth centers, a debut single, a solid EP, and soon even a full album. The band consists of four childhood friends who have been making music together for years, which is clearly felt in their energetic live shows and tight group dynamics."}
+                  ? "Chromattic is een rockband uit het Waasland, ontstaan in 2021 toen vier jonge gasten samenkwamen op een zolder met twee luide gitaren, een basgitaar en een drum. Ze hebben deze zolder omgebouwd van \"rommelkot\" naar hun repetitieruimte, waar ze begonnen met simpele covers te spelen en evolueerden tot een hechte groep die ook eigen nummers schrijft. Sindsdien hebben ze de zolder al regelmatig verlaten om energieke optredens te leveren met een garantie op veel sfeer."
+                  : "Chromattic is a rock band from the Waasland, formed in 2021 when four young guys came together in an attic with two loud guitars, a bass guitar and drums. They converted this attic from a \"junk room\" into their rehearsal space, where they started playing simple covers and evolved into a tight-knit group that also writes their own songs. Since then, they have regularly left the attic to deliver energetic performances with a guarantee of great atmosphere."}
               </p>
             </div>
           </div>
@@ -64,18 +64,10 @@ function Bio() {
                   {language === "nl" ? "Releases" : "Releases"}
                 </h3>
               </div>
-              <p className="text-lg leading-relaxed text-gray-200 mb-4">
-                {language === "nl"
-                  ? "In augustus 2023 brachten ze hun eerste single 'Circles' uit, gevolgd door de EP"
-                  : "In August 2023, they released their first single 'Circles', followed by the EP"}
-                {" "}
-                <span className="italic text-red-300 font-semibold">Silent Dejection</span>
-                {language === "nl" ? " in april 2024." : " in April 2024."}
-              </p>
               <p className="text-lg leading-relaxed text-gray-200">
                 {language === "nl"
-                  ? "Hierop staan de nummers 'Running Away', 'Alex', 'Circles' en 'Super Messy', die allemaal de verschillende gezichten van de band tonen – van melancholie tot pure chaos."
-                  : "It features the tracks 'Running Away', 'Alex', 'Circles' and 'Super Messy', all showing the different faces of the band – from melancholy to pure chaos."}
+                  ? "In augustus 2023 brachten ze hun eerste single Circles uit, gevolgd door de EP Silent Dejection in april 2024. Vanaf juni 2025 volgde er een reeks singles — Sunrise, Alex (rerecorded), Walk of Death en SH!T — die tonen hoe de band geëvolueerd is sinds hun debuutsingle. Momenteel werkt de band aan nieuwe opnames en staat er nog meer muziek gepland voor de toekomst."
+                  : "In August 2023, they released their first single Circles, followed by the EP Silent Dejection in April 2024. From June 2025 onwards, a series of singles followed — Sunrise, Alex (rerecorded), Walk of Death and SH!T — showing how the band has evolved since their debut single. Currently, the band is working on new recordings and more music is planned for the future."}
               </p>
             </div>
           </div>
@@ -105,8 +97,8 @@ function Bio() {
               </div>
               <p className="text-lg leading-relaxed text-gray-200">
                 {language === "nl"
-                  ? "Met optredens op o.a. Pop Is Dead, Droomland en Damberd heeft Chromattic zich snel in de alternatieve scene genesteld. De band staat bekend om hun ruwe maar eerlijke sound, die zowel live als in studio tot uiting komt. Elk optreden is een mix van nostalgie, energie en connectie met het publiek."
-                  : "With performances at Pop Is Dead, Droomland and Damberd, Chromattic has quickly established itself in the alternative scene. The band is known for their raw but honest sound, which comes through both live and in the studio. Each performance is a mix of nostalgia, energy and connection with the audience."}
+                  ? "Sinds het ontstaan van de band speelden ze al op verschillende grote podia, waaronder Rock Zutendaal, Droomland en de Smeulefeesten. Ook kleinere sfeervolle locaties zoals Pop is Dead (in den Egelantier), Café Damberd en Burgies on Stage (in Café Delta) ontbreken niet aan hun parcours. Waar ze ook spelen, slagen ze erin om het publiek mee te trekken in hun energie."
+                  : "Since the band's formation, they have already played on various major stages, including Rock Zutendaal, Droomland and the Smeulefeesten. Smaller atmospheric venues such as Pop is Dead (in den Egelantier), Café Damberd and Burgies on Stage (in Café Delta) are also part of their journey. Wherever they play, they succeed in drawing the audience into their energy."}
               </p>
             </div>
           </div>
@@ -140,8 +132,8 @@ function Bio() {
               <div className="lg:w-1/2">
                 <p className="text-lg leading-relaxed text-gray-100">
                   {language === "nl"
-                    ? "Met een debuutalbum in de maak en een eerste single gepland op 21 juni 2025, kijkt Chromattic vooruit. De groep belooft een nog ambitieuzer geluid, maar zonder hun roots te vergeten. De toekomst oogt fel, luid en vooral: oprecht."
-                    : "With a debut album in the works and a first single planned for June 21, 2025, Chromattic looks ahead. The group promises an even more ambitious sound, but without forgetting their roots. The future looks bright, loud and above all: honest."}
+                    ? "Ook zijn ze nog steeds volop bezig met nieuwe opnames, waardoor meermaals per jaar nieuwe nummers uitgebracht worden. Tegelijk willen ze hun live-reputatie verder uitbouwen door meer shows te spelen en hun publiek uit te breiden, zowel binnen als buiten het Waasland."
+                    : "They are also still fully engaged in new recordings, releasing new songs multiple times per year. At the same time, they want to further build their live reputation by playing more shows and expanding their audience, both within and outside the Waasland."}
                 </p>
               </div>
             </div>

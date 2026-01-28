@@ -7,13 +7,13 @@ const BASE_URL = import.meta.env.BASE_URL;
 export const releases = [
   {
     id: "shit",
-    title: "Shit",
+    title: "SH!T",
     type: "Single",
     releaseDate: "2025-10-24",
     coverImage: `${BASE_URL}images/covers/shit-cover.jpg`,
     description: {
-      nl: "Onze scherpste single tot nu toe — zet ‘m luid.",
-      en: "Our sharpest single yet — play it loud.",
+      nl: "Dit nummer is rechtlijnig en ruw opgebouwd, met vettige riffs en een energie die live meteen het publiek mee krijgt.",
+      en: "This track is straightforward and roughly structured, with greasy riffs and energy that immediately gets the audience going live.",
     },
     links: [
       {
@@ -40,8 +40,8 @@ export const releases = [
     releaseDate: "2025-08-18",
     coverImage: `${BASE_URL}images/covers/walk-of-death-cover.jpg`,
     description: {
-      nl: "Rauw, snel en donker — pure Chromattic energie.",
-      en: "Raw, fast and dark — pure Chromattic energy.",
+      nl: "Het contrast tussen rustige strofes en stevige refreinen geeft het nummer een opbouw naar een donkere climax.",
+      en: "The contrast between quiet verses and powerful choruses builds the track toward a dark climax.",
     },
     links: [
       {
@@ -68,8 +68,8 @@ export const releases = [
     releaseDate: "2025-07-11",
     coverImage: `${BASE_URL}images/covers/alex-cover.jpg`,
     description: {
-      nl: "Een meezingbare track met punch — klaar voor repeat.",
-      en: "A sing-along track with punch — made for repeat.",
+      nl: "Deze herwerkte versie geeft het nummer meer punch en dynamiek dan de originele opname op Silent Dejection.",
+      en: "This reworked version gives the track more punch and dynamics than the original recording on Silent Dejection.",
     },
     links: [
       {
@@ -96,8 +96,8 @@ export const releases = [
     releaseDate: "2025-06-21",
     coverImage: `${BASE_URL}images/covers/sunrise-cover.jpg`,
     description: {
-      nl: "Sunrise is uit — laat ‘m binnenkomen.",
-      en: "Sunrise is out now — let it hit.",
+      nl: "Met het hogere tempo en virtuose solo toont dit nummer een zwaardere en technischere kant van de band.",
+      en: "With its higher tempo and virtuoso solo, this track shows a heavier and more technical side of the band.",
     },
     links: [
       {
@@ -124,8 +124,8 @@ export const releases = [
     releaseDate: "2024-04-26",
     coverImage: `${BASE_URL}images/covers/silent-dejection-cover.jpg`,
     description: {
-      nl: "Onze debuut-EP met Running Away, Alex, Circles en Super Messy.",
-      en: "Our debut EP featuring Running Away, Alex, Circles and Super Messy.",
+      nl: "Onze debuut-EP met 3 nieuwe nummers die onze sound verder ontdekken",
+      en: "Our debut EP with 3 new tracks that further explore our sound",
     },
     tracks: ["Running Away", "Alex", "Circles", "Super Messy"],
     links: [
@@ -153,8 +153,8 @@ export const releases = [
     releaseDate: "2023-08-27",
     coverImage: `${BASE_URL}images/logo.jpg`,
     description: {
-      nl: "Onze eerste single — een krachtige introductie tot onze sound.",
-      en: "Our first single — a punchy introduction to our sound.",
+      nl: "Onze eerste single, een krachtige introductie tot onze sound",
+      en: "Our first single, a powerful introduction to our sound",
     },
     links: [
       {
@@ -181,4 +181,3 @@ export const releases = [
     ],
   },
 ];
-

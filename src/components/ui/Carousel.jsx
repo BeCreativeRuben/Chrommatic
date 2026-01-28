@@ -136,21 +136,27 @@ function CarouselContinuous({ images, className = "", marqueeDurationMs = 40000 
             ref={trackRef}
             className="absolute inset-0 flex gap-4 p-4 will-change-transform"
           >
-            {doubled.map((img, i) => (
-              <div
-                key={`${img?.src || "img"}-${i}`}
-                className="flex-none h-full rounded-xl overflow-hidden border border-red-900/30 bg-black/60 shadow-lg"
-                style={{ width: layout.cardWidthPx || undefined }}
-              >
-                <LazyImage
-                  src={img?.src}
-                  alt={img?.alt || "Carousel image"}
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                  draggable={false}
-                />
-              </div>
-            ))}
+            {doubled.map((img, i) => {
+              // Map back to original index (doubled array wraps)
+              const originalIndex = i % images.length;
+              return (
+                <div
+                  key={`${img?.src || "img"}-${i}`}
+                  className="flex-none h-full rounded-xl overflow-hidden border border-red-900/30 bg-black/60 shadow-lg"
+                  style={{ width: layout.cardWidthPx || undefined }}
+                >
+                  <LazyImage
+                    src={img?.src}
+                    alt={img?.alt || "Carousel image"}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                    draggable={false}
+                    imageGroup={images}
+                    currentIndex={originalIndex}
+                  />
+                </div>
+              );
+            })}
           </div>
         </div>
 
@@ -316,21 +322,40 @@ function CarouselStep({ images, className = "", autoAdvanceMs = 7000 }) {
             style={{ transform: `translate3d(${translateX}px, 0, 0)` }}
             onTransitionEnd={handleTrackTransitionEnd}
           >
-            {extendedImages.map((img, i) => (
-              <div
-                key={`${img?.src || "img"}-${i}`}
-                ref={i === 0 ? firstRef : i === 1 ? secondRef : undefined}
-                className="flex-none w-full sm:w-[48%] lg:w-[32%] h-full rounded-xl overflow-hidden border border-red-900/30 bg-black/60 shadow-lg"
-              >
-                <LazyImage
-                  src={img?.src}
-                  alt={img?.alt || "Carousel image"}
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                  draggable={false}
-                />
-              </div>
-            ))}
+            {extendedImages.map((img, i) => {
+              // Map back to original index (extended array has clones)
+              // headClones: i < baseIndex -> map to last slidesPerView images
+              // safeImages: baseIndex <= i < baseIndex + safeImages.length -> map to i - baseIndex
+              // tailClones: i >= baseIndex + safeImages.length -> map to i - baseIndex - safeImages.length
+              let originalIndex;
+              if (i < baseIndex) {
+                // Head clones (last slidesPerView images)
+                originalIndex = safeImages.length - slidesPerView + i;
+              } else if (i < baseIndex + safeImages.length) {
+                // Real images
+                originalIndex = i - baseIndex;
+              } else {
+                // Tail clones (first slidesPerView images)
+                originalIndex = i - baseIndex - safeImages.length;
+              }
+              return (
+                <div
+                  key={`${img?.src || "img"}-${i}`}
+                  ref={i === 0 ? firstRef : i === 1 ? secondRef : undefined}
+                  className="flex-none w-full sm:w-[48%] lg:w-[32%] h-full rounded-xl overflow-hidden border border-red-900/30 bg-black/60 shadow-lg"
+                >
+                  <LazyImage
+                    src={img?.src}
+                    alt={img?.alt || "Carousel image"}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                    draggable={false}
+                    imageGroup={safeImages}
+                    currentIndex={originalIndex}
+                  />
+                </div>
+              );
+            })}
           </div>
         </div>
 

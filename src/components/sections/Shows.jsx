@@ -12,6 +12,37 @@ import { Calendar, MapPin, Clock } from "lucide-react";
 import Carousel from "../ui/Carousel";
 import { allCarouselImages } from "../../data/carrouselImages";
 
+// Seeded shuffle function for consistent randomization
+function hashString(str) {
+  let h = 2166136261;
+  for (let i = 0; i < str.length; i += 1) {
+    h ^= str.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  return h >>> 0;
+}
+
+function mulberry32(seed) {
+  let a = seed >>> 0;
+  return function rng() {
+    a |= 0;
+    a = (a + 0x6D2B79F5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t ^= t + Math.imul(t ^ (t >>> 7), 61 | t);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+function seededShuffle(items, seed) {
+  const arr = [...items];
+  const rand = mulberry32(seed);
+  for (let i = arr.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(rand() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
 function getShowKey(show) {
   return `${show?.date || ""}::${show?.title || ""}`;
 }
@@ -49,7 +80,11 @@ function Shows() {
   const selectedShowGalleryImages = useMemo(() => {
     if (!selectedShow?.galleryTag) return [];
     const tag = String(selectedShow.galleryTag).toLowerCase();
-    return allCarouselImages.filter((img) => String(img?.alt || "").toLowerCase().startsWith(tag));
+    const filtered = allCarouselImages.filter((img) => String(img?.alt || "").toLowerCase().startsWith(tag));
+    
+    // Shuffle the filtered images with daily seed for consistent but random order
+    const seed = hashString(`chromattic-show-${selectedShow.galleryTag}:${new Date().toISOString().slice(0, 10)}`);
+    return seededShuffle(filtered, seed);
   }, [selectedShow]);
 
   // Keep the details centered as a modal (no scroll-jump)
@@ -79,12 +114,26 @@ function Shows() {
 
   const formatDuration = (minutes) => {
     if (!minutes) return "";
+    const hours = Math.floor(minutes / 60);
+    const mins = minutes % 60;
+    
     if (language === "nl") {
-      if (minutes === 60) return "1 uur";
-      return `${minutes} min`;
+      if (hours > 0 && mins > 0) {
+        return `${hours} uur ${mins} minuten`;
+      } else if (hours > 0) {
+        return `${hours} uur`;
+      } else {
+        return `${mins} minuten`;
+      }
     }
-    if (minutes === 60) return "1 hour";
-    return `${minutes} min`;
+    // English
+    if (hours > 0 && mins > 0) {
+      return `${hours} hour${hours > 1 ? "s" : ""} ${mins} minute${mins > 1 ? "s" : ""}`;
+    } else if (hours > 0) {
+      return `${hours} hour${hours > 1 ? "s" : ""}`;
+    } else {
+      return `${mins} minute${mins > 1 ? "s" : ""}`;
+    }
   };
 
   return (
@@ -154,35 +203,13 @@ function Shows() {
             className="relative w-full max-w-5xl max-h-[85vh] overflow-y-auto bg-gradient-to-br from-red-900/30 via-black to-black rounded-2xl p-6 sm:p-8 md:p-10 border border-red-900/50 shadow-2xl"
           >
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-8">
-              <div>
+              <div className="flex items-center">
                 <h3
                   id="show-details-title"
-                  className="text-3xl md:text-4xl font-bold text-white uppercase tracking-widest font-display mb-2"
+                  className="text-3xl md:text-4xl font-bold text-white uppercase tracking-widest font-display"
                 >
                   {selectedShow.title}
                 </h3>
-                <p className="text-gray-300 flex items-center gap-3 flex-wrap">
-                  <span className="inline-flex items-center gap-2">
-                    <Calendar size={18} className="text-red-400" aria-hidden="true" />
-                    {formatDate(selectedShow.date)}
-                  </span>
-                  <span className="text-gray-600">•</span>
-                  <span className="inline-flex items-center gap-2">
-                    <MapPin size={18} className="text-red-400" aria-hidden="true" />
-                    {selectedShow.location}
-                    {selectedShow.venue ? `, ${selectedShow.venue}` : ""}
-                    {selectedShow.area ? `, ${selectedShow.area}` : ""}, {BRAND.country}
-                  </span>
-                  {selectedShow.durationMinutes ? (
-                    <>
-                      <span className="text-gray-600">•</span>
-                      <span className="inline-flex items-center gap-2">
-                        <Clock size={18} className="text-red-400" aria-hidden="true" />
-                        {t.duration}: {formatDuration(selectedShow.durationMinutes)}
-                      </span>
-                    </>
-                  ) : null}
-                </p>
               </div>
 
               <div className="flex items-center gap-3">
@@ -201,24 +228,28 @@ function Shows() {
                 <h4 className="text-2xl font-bold mb-4 uppercase tracking-widest font-display text-red-400">
                   {t.highlights}
                 </h4>
-                <ul className="space-y-3 text-gray-300">
-                  <li className="flex items-start gap-3">
-                    <span className="mt-1 w-2 h-2 rounded-full bg-red-500 flex-shrink-0"></span>
+                <div className="text-gray-300 flex flex-col gap-3">
+                  <div className="flex items-center gap-2">
+                    <Calendar size={18} className="text-red-400" aria-hidden="true" />
+                    <span>{formatDate(selectedShow.date)}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <MapPin size={18} className="text-red-400" aria-hidden="true" />
                     <span>
-                      {t.location}: {selectedShow.location}
+                      {selectedShow.location}
                       {selectedShow.venue ? `, ${selectedShow.venue}` : ""}
-                      {selectedShow.area ? `, ${selectedShow.area}` : ""} ({BRAND.country})
+                      {selectedShow.area ? `, ${selectedShow.area}` : ""}, {BRAND.country}
                     </span>
-                  </li>
+                  </div>
                   {selectedShow.durationMinutes ? (
-                    <li className="flex items-start gap-3">
-                      <span className="mt-1 w-2 h-2 rounded-full bg-red-500 flex-shrink-0"></span>
+                    <div className="flex items-center gap-2">
+                      <Clock size={18} className="text-red-400" aria-hidden="true" />
                       <span>
                         {t.duration}: {formatDuration(selectedShow.durationMinutes)}
                       </span>
-                    </li>
+                    </div>
                   ) : null}
-                </ul>
+                </div>
               </div>
 
               <div>

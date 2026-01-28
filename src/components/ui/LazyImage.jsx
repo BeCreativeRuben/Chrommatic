@@ -18,6 +18,8 @@ function LazyImage({
   loading = "lazy",
   rootMargin = "600px",
   lightbox = true,
+  imageGroup,
+  currentIndex,
   ...rest
 }) {
   const ref = useRef(null);
@@ -67,7 +69,12 @@ function LazyImage({
               // Don't trigger lightbox when image is inside a link.
               const isInsideLink = e.currentTarget.closest("a");
               if (isInsideLink) return;
-              open({ src, alt });
+              // If imageGroup is provided, use group navigation
+              if (imageGroup && Array.isArray(imageGroup) && imageGroup.length > 1) {
+                open({ src, alt, imageGroup, currentIndex });
+              } else {
+                open({ src, alt });
+              }
             }
           : undefined
       }
@@ -78,7 +85,12 @@ function LazyImage({
           ? (e) => {
               if (e.key === "Enter" || e.key === " ") {
                 e.preventDefault();
-                open({ src, alt });
+                // If imageGroup is provided, use group navigation
+                if (imageGroup && Array.isArray(imageGroup) && imageGroup.length > 1) {
+                  open({ src, alt, imageGroup, currentIndex });
+                } else {
+                  open({ src, alt });
+                }
               }
             }
           : undefined

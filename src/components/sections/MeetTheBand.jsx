@@ -66,9 +66,14 @@ function MeetTheBand() {
 
       {/* Members grid */}
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {members.map((m) => {
+        {members.map((m, index) => {
           const src = `${BASE_URL}images/meettheband/${encodeURIComponent(m.imageFile)}`;
           const role = m.roles?.[language] || m.roles?.nl || "";
+          // Create image group for all member photos
+          const memberImageGroup = members.map((member) => ({
+            src: `${BASE_URL}images/meettheband/${encodeURIComponent(member.imageFile)}`,
+            alt: `${member.name} - Chromattic`,
+          }));
           return (
             <article
               key={m.name}
@@ -80,6 +85,8 @@ function MeetTheBand() {
                   alt={`${m.name} - Chromattic`}
                   className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                   loading="lazy"
+                  imageGroup={memberImageGroup}
+                  currentIndex={index}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
               </div>

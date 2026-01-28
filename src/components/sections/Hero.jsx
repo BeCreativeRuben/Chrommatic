@@ -77,9 +77,6 @@ function Hero() {
         <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 mb-3 sm:mb-4 font-light tracking-wide animate-fade-in-delay-2 px-2">
           {t.tagline}
         </p>
-        <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-400 mb-8 sm:mb-10 md:mb-12 max-w-2xl mx-auto leading-relaxed animate-fade-in-delay-3 px-2">
-          {t.description}
-        </p>
 
         {/* CTA Buttons - Responsive sizing */}
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mb-12 sm:mb-16 animate-fade-in-delay-4 w-full px-2">

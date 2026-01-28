@@ -69,14 +69,6 @@ function Media() {
 
       {/* Photo carousel */}
       <div className="mt-12">
-        <h3 className="text-2xl md:text-3xl font-bold mb-4 uppercase tracking-widest font-display text-red-400">
-          {language === "nl" ? "Foto's" : "Photos"}
-        </h3>
-        <p className="text-gray-300 mb-6">
-          {language === "nl"
-            ? "Een kleine selectie live- en bandfoto’s."
-            : "A small selection of live and band photos."}
-        </p>
         <Carousel images={previewImages} variant="continuous" marqueeDurationMs={90000} />
 
         <div className="mt-6 flex justify-center">
@@ -150,7 +142,7 @@ function Media() {
                 </h3>
                 <p className="text-gray-300 mt-2">
                   {language === "nl"
-                    ? "Totaaloverzicht van alle foto’s."
+                    ? "Totaaloverzicht van alle foto's."
                     : "Full overview of all photos."}
                 </p>
               </div>
@@ -173,6 +165,8 @@ function Media() {
                       alt={img.alt || "Photo"}
                       loading="lazy"
                       className="w-full h-auto block"
+                      imageGroup={allImages}
+                      currentIndex={i}
                     />
                   </div>
                 </div>
