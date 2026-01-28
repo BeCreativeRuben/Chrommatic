@@ -185,3 +185,18 @@ body {
   padding-right: 0;
 }
 
+/* Mailchimp form response styling */
+#mce-success-response {
+  color: #ef4444 !important;
+  font-size: 0.875rem !important;
+  margin-top: 0.5rem !important;
+  display: block !important;
+}
+
+#mce-error-response {
+  color: #ef4444 !important;
+  font-size: 0.875rem !important;
+  margin-top: 0.5rem !important;
+  display: block !important;
+}
+
