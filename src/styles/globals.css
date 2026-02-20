@@ -200,3 +200,16 @@ body {
   display: block !important;
 }
 
+/* Launch Timer fade-out animation */
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.launch-timer-fade-out {
+  animation: fade-out 0.8s ease-out forwards;
+}

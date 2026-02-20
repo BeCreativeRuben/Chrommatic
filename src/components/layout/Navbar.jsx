@@ -20,7 +20,7 @@ const getNavLinks = (t) => [
   { href: "#contact", label: t.nav.contact, id: "contact" },
 ];
 
-function Navbar() {
+function Navbar({ isTimerActive = false }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showLogo, setShowLogo] = useState(true); // Toggle between logo and text
   const sectionIds = ["hero", "bio", "releases", "shows", "media", "meet-the-band", "contact"];
@@ -55,6 +55,30 @@ function Navbar() {
       document.body.style.overflow = "unset";
     };
   }, [menuOpen]);
+
+  // If timer is active, show "SOON" mode with centered logo and tagline
+  if (isTimerActive) {
+    return (
+      <header className="sticky top-0 z-50 bg-gradient-to-b from-black via-black/95 to-black/90 backdrop-blur-md flex flex-col items-center justify-center px-3 sm:px-4 md:px-6 py-3 sm:py-4 md:py-5 border-b border-red-900/50 shadow-xl shadow-red-900/20">
+        <div className="flex flex-col items-center gap-2 sm:gap-3">
+          <img
+            src={IMAGE_PATHS.logo}
+            alt="Chromattic logo"
+            className="h-10 sm:h-12 md:h-14 w-auto logo-metallic"
+            loading="eager"
+          />
+          <p className="text-xs sm:text-sm md:text-base text-gray-300 uppercase tracking-widest font-semibold">
+            Alternatieve Rock uit het Waasland
+          </p>
+        </div>
+        <div className="mt-3 sm:mt-4">
+          <span className="text-lg sm:text-xl md:text-2xl font-bold gradient-text tracking-widest font-display uppercase">
+            SOON
+          </span>
+        </div>
+      </header>
+    );
+  }
 
   return (
     <>
