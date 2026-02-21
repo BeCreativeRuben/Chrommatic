@@ -61,8 +61,21 @@ function LaunchTimer({ onTimerComplete }) {
   // Format numbers with leading zeros
   const formatNumber = (num) => String(num).padStart(2, "0");
 
+  // Laatste minuut: alleen seconden over
+  const isLastMinute =
+    timeLeft.days === 0 && timeLeft.hours === 0 && timeLeft.minutes === 0 && timeLeft.total > 0;
+
   return (
     <div className="fixed inset-0 z-[9999] bg-gradient-to-b from-black via-black/98 to-black/95 backdrop-blur-lg flex items-center justify-center">
+      {/* Test trigger: simuleert timer op 0 → laadscherm → website */}
+      <button
+        type="button"
+        onClick={() => onTimerComplete?.()}
+        className="absolute bottom-4 right-4 px-3 py-2 text-xs uppercase tracking-widest text-gray-500 hover:text-red-400 border border-gray-600 hover:border-red-500/50 rounded-sm transition-colors"
+        aria-label="Test launch flow"
+      >
+        Test launch
+      </button>
       <div className="text-center px-4 sm:px-6 md:px-8 w-full max-w-4xl">
         {/* Logo */}
         <div className="mb-8 sm:mb-12 animate-fade-in">
@@ -147,6 +160,13 @@ function LaunchTimer({ onTimerComplete }) {
 
         {/* Decorative line */}
         <div className="w-24 sm:w-32 md:w-40 h-1 bg-gradient-to-r from-transparent via-red-500 to-transparent mx-auto animate-fade-in-delay-3"></div>
+
+        {/* Dankbericht in de laatste minuut */}
+        {isLastMinute && (
+          <p className="mt-8 sm:mt-10 px-4 py-3 text-center text-sm sm:text-base text-gray-300 max-w-xl mx-auto border border-red-900/40 rounded-sm bg-black/40 animate-fade-in">
+            De laatste minuut! We zijn iedereen die ons steunt ontzettend dankbaar — zonder jullie hadden we dit niet kunnen bereiken.
+          </p>
+        )}
       </div>
     </div>
   );
