@@ -67,15 +67,6 @@ function LaunchTimer({ onTimerComplete }) {
 
   return (
     <div className="fixed inset-0 z-[9999] bg-gradient-to-b from-black via-black/98 to-black/95 backdrop-blur-lg flex items-center justify-center">
-      {/* Test trigger: simuleert timer op 0 → laadscherm → website */}
-      <button
-        type="button"
-        onClick={() => onTimerComplete?.()}
-        className="absolute bottom-4 right-4 px-3 py-2 text-xs uppercase tracking-widest text-gray-500 hover:text-red-400 border border-gray-600 hover:border-red-500/50 rounded-sm transition-colors"
-        aria-label="Test launch flow"
-      >
-        Test launch
-      </button>
       <div className="text-center px-4 sm:px-6 md:px-8 w-full max-w-4xl">
         {/* Logo */}
         <div className="mb-8 sm:mb-12 animate-fade-in">
