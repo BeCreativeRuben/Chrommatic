@@ -6,6 +6,14 @@ const BASE_URL = import.meta.env.BASE_URL;
 
 export const shows = [
   {
+    date: "2026-03-30",
+    time: "17:30",
+    title: "Lustrum Frequenties",
+    location: "Gent",
+    venue: "Grasveld gebouw S9",
+    area: "campus Sterre UGent",
+  },
+  {
     date: "2025-11-18",
     title: "Burgies on Stage (VTK)",
     location: "Gent",
@@ -29,6 +37,7 @@ export const shows = [
     title: "Charlatan",
     location: "Gent",
     ticketsUrl: "https://facebook.com/events/s/early-pedestrian-harvesters/1111353794410132/",
+    galleryTag: "charlatan",
   },
   {
     date: "2024-09-21",

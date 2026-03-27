@@ -5,7 +5,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { shows } from "../../data/shows";
 import { BRAND } from "../../data/constants";
-import { getYear, isFutureDate, formatDate } from "../../utils/dateFormatter";
+import { getYear, isFutureDateTime, formatDate } from "../../utils/dateFormatter";
 import { useLanguage } from "../../contexts/LanguageContext";
 import { translations } from "../../data/translations";
 import { Calendar, MapPin, Clock } from "lucide-react";
@@ -65,8 +65,8 @@ function Shows() {
     (show) => getYear(show.date) === selectedYear
   );
 
-  const upcoming = filteredShows.filter((show) => isFutureDate(show.date));
-  const past = filteredShows.filter((show) => !isFutureDate(show.date));
+  const upcoming = filteredShows.filter((show) => isFutureDateTime(show.date, show.time));
+  const past = filteredShows.filter((show) => !isFutureDateTime(show.date, show.time));
 
   useEffect(() => {
     setSelectedShowKey(null);
@@ -233,6 +233,12 @@ function Shows() {
                     <Calendar size={18} className="text-red-400" aria-hidden="true" />
                     <span>{formatDate(selectedShow.date)}</span>
                   </div>
+                  {selectedShow.time ? (
+                    <div className="flex items-center gap-2">
+                      <Clock size={18} className="text-red-400" aria-hidden="true" />
+                      <span>{selectedShow.time}</span>
+                    </div>
+                  ) : null}
                   <div className="flex items-center gap-2">
                     <MapPin size={18} className="text-red-400" aria-hidden="true" />
                     <span>
@@ -307,6 +313,12 @@ function Shows() {
                           >
                             {formatDate(show.date)}
                           </time>
+                          {show.time ? (
+                            <p className="text-sm text-gray-300 mb-2 flex items-center gap-2">
+                              <Clock size={14} className="text-red-400" aria-hidden="true" />
+                              <span>{show.time}</span>
+                            </p>
+                          ) : null}
                           <h4 className="text-xl font-bold text-white mb-2">
                             {show.title}
                           </h4>
@@ -398,6 +410,12 @@ function Shows() {
                           >
                             {formatDate(show.date)}
                           </time>
+                          {show.time ? (
+                            <p className="text-sm text-gray-300 mb-2 flex items-center gap-2">
+                              <Clock size={14} className="text-red-400" aria-hidden="true" />
+                              <span>{show.time}</span>
+                            </p>
+                          ) : null}
                           <h4 className="text-xl font-bold text-white mb-2">
                             {show.title}
                           </h4>

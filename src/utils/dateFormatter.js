@@ -33,3 +33,14 @@ export function isFutureDate(dateString) {
   return new Date(dateString) >= new Date();
 }
 
+/**
+ * Checks if a date (optionally with time) is in the future
+ * @param {string} dateString - ISO date string (YYYY-MM-DD)
+ * @param {string} [timeString] - Time string (HH:mm)
+ * @returns {boolean} True if date/time is in the future
+ */
+export function isFutureDateTime(dateString, timeString) {
+  if (!timeString) return isFutureDate(dateString);
+  return new Date(`${dateString}T${timeString}:00`) >= new Date();
+}
+
