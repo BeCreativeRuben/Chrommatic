@@ -1,10 +1,23 @@
 /**
  * Shows data for Chromattic
+ *
+ * Fields per show:
+ *   date (YYYY-MM-DD, required), title (required), location (city, required)
+ *   time ("HH:mm"), venue, area, durationMinutes, galleryTag (prefix of photo
+ *   file names in /images/carrousel), ticketsUrl, image, free (true = "Gratis")
  */
 
 const BASE_URL = import.meta.env.BASE_URL;
 
 export const shows = [
+  {
+    date: "2026-10-03",
+    time: "21:15",
+    title: "Klusterrock",
+    location: "Zele",
+    venue: "JC Juvenes",
+    free: true,
+  },
   {
     date: "2026-03-30",
     time: "17:30",
@@ -43,7 +56,7 @@ export const shows = [
     date: "2024-09-21",
     title: "Pop Is Dead",
     location: "Sint-Niklaas",
-    image: `${BASE_URL}images/shows/pop-is-dead.jpg`,
+    image: `${BASE_URL}images/shows/pop-is-dead.webp`,
     galleryTag: "pop is dead",
     durationMinutes: 75,
   },

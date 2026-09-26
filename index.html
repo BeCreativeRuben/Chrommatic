@@ -2,7 +2,9 @@
 <html lang="nl">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/jpeg" href="/images/logo.jpg" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/favicon-64.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#000000" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Primary Meta Tags -->
@@ -12,21 +14,26 @@
     <meta name="keywords" content="Chromattic, alternatieve rock, poppunk, Waasland, Belgische band, Silent Dejection, Circles" />
     <meta name="author" content="Chromattic" />
     <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://chromattic.rocks/" />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://chromattic.be/" />
+    <meta property="og:url" content="https://chromattic.rocks/" />
+    <meta property="og:site_name" content="Chromattic" />
     <meta property="og:title" content="Chromattic - Alternatieve Rockband uit het Waasland" />
     <meta property="og:description" content="Chromattic is een alternatieve rockband uit het Waasland die de nostalgie van 2000's poppunk mengt met moderne sounds." />
-    <meta property="og:image" content="/images/logo.jpg" />
+    <meta property="og:image" content="https://chromattic.rocks/images/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Chromattic logo op een live foto van de band" />
     <meta property="og:locale" content="nl_BE" />
     
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://chromattic.be/" />
-    <meta property="twitter:title" content="Chromattic - Alternatieve Rockband uit het Waasland" />
-    <meta property="twitter:description" content="Chromattic is een alternatieve rockband uit het Waasland die de nostalgie van 2000's poppunk mengt met moderne sounds." />
-    <meta property="twitter:image" content="/images/logo.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://chromattic.rocks/" />
+    <meta name="twitter:title" content="Chromattic - Alternatieve Rockband uit het Waasland" />
+    <meta name="twitter:description" content="Chromattic is een alternatieve rockband uit het Waasland die de nostalgie van 2000's poppunk mengt met moderne sounds." />
+    <meta name="twitter:image" content="https://chromattic.rocks/images/og-image.jpg" />
     
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -35,12 +42,13 @@
       "@type": "MusicGroup",
       "name": "Chromattic",
       "description": "Alternatieve rockband uit het Waasland die de nostalgie van 2000's poppunk mengt met moderne sounds",
-      "url": "https://chromattic.be",
-      "logo": "https://chromattic.be/images/logo.jpg",
+      "url": "https://chromattic.rocks",
+      "logo": "https://chromattic.rocks/images/logo.jpg",
+      "image": "https://chromattic.rocks/images/og-image.jpg",
       "sameAs": [
-        "https://www.instagram.com/chromattictheband",
-        "https://www.facebook.com/chromattictheband",
-        "https://www.youtube.com/@chromattictheband"
+        "https://www.instagram.com/chromattic_band/",
+        "https://www.facebook.com/chromatticband",
+        "https://www.youtube.com/@chromattic_band"
       ],
       "email": "chromattic.contact@gmail.com",
       "foundingLocation": {
@@ -57,6 +65,8 @@
       ]
     }
     </script>
+    <!-- Hero logo is the LCP element: fetch it early -->
+    <link rel="preload" as="image" href="/images/logo-transparent.webp" fetchpriority="high" />
   </head>
   <body>
     <!-- Google tag (gtag.js) - in body voor betrouwbare uitvoering -->

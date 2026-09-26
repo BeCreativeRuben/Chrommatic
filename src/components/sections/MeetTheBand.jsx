@@ -15,7 +15,7 @@ const members = [
       nl: "Leadzanger & Bassist",
       en: "Lead Vocalist & Bassist",
     },
-    imageFile: "fotoshoot tijl.jpg",
+    imageFile: "fotoshoot tijl.webp",
   },
   {
     name: "Nand",
@@ -23,7 +23,7 @@ const members = [
       nl: "Gitarist, Audio Engineer",
       en: "Guitarist, Audio Engineer",
     },
-    imageFile: "fotoshoot nand.jpg",
+    imageFile: "fotoshoot nand.webp",
   },
   {
     name: "Joeri",
@@ -31,7 +31,7 @@ const members = [
       nl: "Gitarist, Backing vocalist & Keyboard",
       en: "Guitarist, Backing Vocalist & Keyboard",
     },
-    imageFile: "fotoshoot joeri.jpg",
+    imageFile: "fotoshoot joeri.webp",
   },
   {
     name: "Korneel",
@@ -39,7 +39,7 @@ const members = [
       nl: "Drummer",
       en: "Drummer",
     },
-    imageFile: "fotoshoot korneel.jpg",
+    imageFile: "fotoshoot korneel.webp",
   },
 ];
 

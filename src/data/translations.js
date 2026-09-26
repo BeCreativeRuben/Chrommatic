@@ -19,6 +19,7 @@ export const translations = {
       description: "Nostalgie van 2000's poppunk gemengd met moderne sounds",
       bookNow: "Boek Nu",
       viewShows: "Bekijk Shows",
+      nextShow: "Volgende show",
     },
     releases: {
       title: "Releases",
@@ -38,6 +39,7 @@ export const translations = {
       location: "Locatie",
       photos: "Foto's",
       noShows: "Geen shows gevonden voor",
+      free: "Gratis",
     },
     media: {
       title: "Media",
@@ -90,6 +92,7 @@ export const translations = {
       description: "Nostalgia of 2000's pop punk blended with modern sounds",
       bookNow: "Book Now",
       viewShows: "View Shows",
+      nextShow: "Next show",
     },
     releases: {
       title: "Releases",
@@ -109,6 +112,7 @@ export const translations = {
       location: "Location",
       photos: "Photos",
       noShows: "No shows found for",
+      free: "Free",
     },
     media: {
       title: "Media",

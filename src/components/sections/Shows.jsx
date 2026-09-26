@@ -8,7 +8,7 @@ import { BRAND } from "../../data/constants";
 import { getYear, isFutureDateTime, formatDate } from "../../utils/dateFormatter";
 import { useLanguage } from "../../contexts/LanguageContext";
 import { translations } from "../../data/translations";
-import { Calendar, MapPin, Clock } from "lucide-react";
+import { Calendar, MapPin, Clock, Ticket } from "lucide-react";
 import Carousel from "../ui/Carousel";
 import { allCarouselImages } from "../../data/carrouselImages";
 
@@ -80,7 +80,7 @@ function Shows() {
   const selectedShowGalleryImages = useMemo(() => {
     if (!selectedShow?.galleryTag) return [];
     const tag = String(selectedShow.galleryTag).toLowerCase();
-    const filtered = allCarouselImages.filter((img) => String(img?.alt || "").toLowerCase().startsWith(tag));
+    const filtered = allCarouselImages.filter((img) => String(img?.tag || img?.alt || "").toLowerCase().startsWith(tag));
     
     // Shuffle the filtered images with daily seed for consistent but random order
     const seed = hashString(`chromattic-show-${selectedShow.galleryTag}:${new Date().toISOString().slice(0, 10)}`);
@@ -247,6 +247,12 @@ function Shows() {
                       {selectedShow.area ? `, ${selectedShow.area}` : ""}, {BRAND.country}
                     </span>
                   </div>
+                  {selectedShow.free ? (
+                    <div className="flex items-center gap-2">
+                      <Ticket size={18} className="text-red-400" aria-hidden="true" />
+                      <span>{t.free}</span>
+                    </div>
+                  ) : null}
                   {selectedShow.durationMinutes ? (
                     <div className="flex items-center gap-2">
                       <Clock size={18} className="text-red-400" aria-hidden="true" />
@@ -258,12 +264,14 @@ function Shows() {
                 </div>
               </div>
 
-              <div>
-                <h4 className="text-2xl font-bold mb-4 uppercase tracking-widest font-display text-red-400 text-left">
-                  {t.photos}
-                </h4>
-                <Carousel images={selectedShowGalleryImages} autoAdvanceMs={4500} />
-              </div>
+              {selectedShowGalleryImages.length > 0 && (
+                <div>
+                  <h4 className="text-2xl font-bold mb-4 uppercase tracking-widest font-display text-red-400 text-left">
+                    {t.photos}
+                  </h4>
+                  <Carousel images={selectedShowGalleryImages} autoAdvanceMs={4500} />
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -328,6 +336,14 @@ function Shows() {
                               {show.location}, {BRAND.country}
                             </address>
                           </div>
+                          {show.free ? (
+                            <p className="mt-3">
+                              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-900/50 border border-red-500/40 text-xs font-bold uppercase tracking-widest text-white">
+                                <Ticket size={14} className="text-red-400" aria-hidden="true" />
+                                {t.free}
+                              </span>
+                            </p>
+                          ) : null}
                         </div>
                       </div>
 
@@ -425,6 +441,14 @@ function Shows() {
                               {show.location}, {BRAND.country}
                             </address>
                           </div>
+                          {show.free ? (
+                            <p className="mt-3">
+                              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-900/50 border border-red-500/40 text-xs font-bold uppercase tracking-widest text-white">
+                                <Ticket size={14} className="text-red-400" aria-hidden="true" />
+                                {t.free}
+                              </span>
+                            </p>
+                          ) : null}
                         </div>
                       </div>
 

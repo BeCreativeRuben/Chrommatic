@@ -15,7 +15,7 @@ export default {
       },
       fontFamily: {
         sans: ["system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif"],
-        display: ["Impact", "Arial Black", "sans-serif"], // Rock/punk inspired
+        display: ["Impact", "Anton", "Arial Black", "sans-serif"], // Rock/punk inspired
       },
       letterSpacing: {
         wider: "0.1em",

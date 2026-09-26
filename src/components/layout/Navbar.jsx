@@ -91,8 +91,10 @@ function Navbar({ isTimerActive = false }) {
         >
           {showLogo ? (
             <img
-              src={IMAGE_PATHS.logo}
+              src={IMAGE_PATHS.logoNav}
               alt="Chromattic logo"
+              width="40"
+              height="40"
               className="h-8 sm:h-9 md:h-10 w-auto logo-metallic cursor-pointer"
               loading="eager"
             />

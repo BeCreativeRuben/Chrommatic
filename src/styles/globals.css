@@ -178,11 +178,17 @@ body {
 /* Hero section specific styles */
 #hero {
   margin: 0;
-  box-sizing: content-box;
-  padding-top: 80px;
-  padding-bottom: 80px;
-  padding-left: 0;
-  padding-right: 0;
+  padding: 0;
+  background: #000;
+}
+
+/* Respect users who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* Mailchimp form response styling */
