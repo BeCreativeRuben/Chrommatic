@@ -4,7 +4,8 @@
  * Fields per show:
  *   date (YYYY-MM-DD, required), title (required), location (city, required)
  *   time ("HH:mm"), venue, area, durationMinutes, galleryTag (prefix of photo
- *   file names in /images/carrousel), ticketsUrl, image, free (true = "Gratis")
+ *   file names in /images/carrousel), ticketsUrl, image, free (true = "Gratis"),
+ *   description (optional; event markup uses this, or builds one from the fields above)
  */
 
 const BASE_URL = import.meta.env.BASE_URL;
