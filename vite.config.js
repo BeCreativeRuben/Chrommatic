@@ -58,21 +58,40 @@ function eventEndDate(show, startDate) {
   return `${endDay}T${endTime}:00${brusselsOffset(endDay, endTime)}`
 }
 
+const EVENT_PAGE_URL = `${SITE_URL}/#shows`
+
+// Ticket links win. A relative path is resolved against the site origin so the
+// published value is always an absolute URL. Shows with no ticket link use the
+// event's own page.
+function offerUrl(show) {
+  if (typeof show.ticketsUrl !== 'string') return EVENT_PAGE_URL
+  const url = show.ticketsUrl.trim()
+  if (!url) return EVENT_PAGE_URL
+  if (/^https?:\/\//i.test(url)) return url
+  if (url.startsWith('/')) return `${SITE_URL}${url}`
+  return `${SITE_URL}/${url}`
+}
+
 // Offers are included only when the show record has a real price or ticket URL.
 // `free: true` is an explicit price of 0 EUR. Shows with neither are omitted.
-function eventOffers(show) {
-  const offer = { '@type': 'Offer' }
-  let hasOffer = false
+// Every offer has an absolute url, availability, and validFrom. There is no
+// separate on-sale date, so validFrom is the event start rather than an
+// invented sale time.
+function eventOffers(show, startDate) {
+  const ticketsUrl = typeof show.ticketsUrl === 'string' && show.ticketsUrl.trim()
+  if (show.free !== true && !ticketsUrl) return null
+
+  const offer = {
+    '@type': 'Offer',
+    url: offerUrl(show),
+    availability: 'https://schema.org/InStock',
+    validFrom: startDate,
+  }
   if (show.free === true) {
     offer.price = '0'
     offer.priceCurrency = 'EUR'
-    hasOffer = true
   }
-  if (typeof show.ticketsUrl === 'string' && show.ticketsUrl.trim()) {
-    offer.url = show.ticketsUrl.trim()
-    hasOffer = true
-  }
-  return hasOffer ? offer : null
+  return offer
 }
 
 // Build-time JSON-LD (schema.org MusicEvent) generated from src/data/shows.js,
@@ -119,7 +138,7 @@ function showsJsonLd() {
             url: `${SITE_URL}/#shows`,
           }
           if (s.free) event.isAccessibleForFree = true
-          const offers = eventOffers(s)
+          const offers = eventOffers(s, startDate)
           if (offers) event.offers = offers
           return event
         })
