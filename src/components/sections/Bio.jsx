@@ -47,10 +47,12 @@ function Bio() {
       <div className="mb-20">
         <div className="bg-gradient-to-r from-black via-red-950/50 to-black rounded-2xl overflow-hidden border border-red-800/30 shadow-xl">
           <div className="flex flex-col lg:flex-row">
-            <div className="lg:w-1/2">
+            <div className="w-full lg:w-1/2">
               <LazyImage
                 src={IMAGE_PATHS.shows.droomballon}
                 alt="Chromattic live @ Droomland"
+                width={1600}
+                height={1065}
                 className="w-full h-full object-cover"
                 loading="lazy"
               />
@@ -78,10 +80,12 @@ function Bio() {
       <div className="mb-20">
         <div className="bg-gradient-to-l from-black via-red-950/50 to-black rounded-2xl overflow-hidden border border-red-800/30 shadow-xl">
           <div className="flex flex-col lg:flex-row-reverse">
-            <div className="lg:w-1/2">
+            <div className="w-full lg:w-1/2">
               <LazyImage
                 src={IMAGE_PATHS.shows.popIsDead}
                 alt="Chromattic @ Pop Is Dead"
+                width={1080}
+                height={720}
                 className="w-full h-full object-cover"
                 loading="lazy"
               />
@@ -121,11 +125,13 @@ function Bio() {
               </h3>
             </div>
             <div className="flex flex-col lg:flex-row gap-8 items-center">
-              <div className="lg:w-1/2">
+              <div className="w-full lg:w-1/2">
                 <LazyImage
                   src={IMAGE_PATHS.shows.damberd}
                   alt="Chromattic @ Damberd"
-                  className="w-full rounded-lg shadow-xl border-2 border-red-600/30"
+                  width={1600}
+                  height={1067}
+                  className="w-full h-auto rounded-lg shadow-xl border-2 border-red-600/30"
                   loading="lazy"
                 />
               </div>

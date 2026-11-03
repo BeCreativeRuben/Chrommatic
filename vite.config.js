@@ -7,6 +7,30 @@ import { pathToFileURL } from 'node:url'
 
 const SITE_URL = 'https://chromattic.rocks'
 
+function loadDataModule(relativePath) {
+  const src = readFileSync(new URL(relativePath, import.meta.url), 'utf8')
+    .replace(/import\.meta\.env\.BASE_URL/g, '"/"')
+    .replace(/import\.meta\.env\.[A-Z0-9_]+/g, '""')
+  const tmp = join(mkdtempSync(join(tmpdir(), 'seo-')), 'mod.mjs')
+  writeFileSync(tmp, src)
+  return import(pathToFileURL(tmp).href)
+}
+
+function isUpcoming(show) {
+  if (!show.time) return new Date(show.date) >= new Date()
+  return new Date(`${show.date}T${show.time}:00`) >= new Date()
+}
+
+function cleanUrl(url) {
+  try {
+    const parsed = new URL(url)
+    parsed.searchParams.delete('si')
+    return parsed.toString()
+  } catch {
+    return url
+  }
+}
+
 // Offset of Europe/Brussels on a given date, e.g. "+02:00"
 function brusselsOffset(date, time) {
   const d = new Date(`${date}T${time || '12:00'}:00Z`)
@@ -100,16 +124,12 @@ function showsJsonLd() {
   return {
     name: 'shows-jsonld',
     async transformIndexHtml(html) {
-      const src = readFileSync(new URL('./src/data/shows.js', import.meta.url), 'utf8')
-        .replace(/import\.meta\.env\.BASE_URL/g, '"/"')
-      const tmp = join(mkdtempSync(join(tmpdir(), 'shows-')), 'shows.mjs')
-      writeFileSync(tmp, src)
-      const { shows } = await import(pathToFileURL(tmp).href)
+      const { shows } = await loadDataModule('./src/data/shows.js')
 
-      const band = { '@type': 'MusicGroup', name: 'Chromattic', url: SITE_URL }
+      const bandRef = { '@id': `${SITE_URL}/#band` }
       const events = shows
-        .filter((s) => !/priv[eé]/i.test(s.title)) // private parties are not public events
-        .sort((a, b) => b.date.localeCompare(a.date))
+        .filter((s) => !/priv[eé]/i.test(s.title) && isUpcoming(s))
+        .sort((a, b) => a.date.localeCompare(b.date))
         .map((s) => {
           const postal = s.location.match(/^(\d{4})\s+(.*)$/)
           const locality = postal ? postal[2] : s.location
@@ -133,8 +153,8 @@ function showsJsonLd() {
               },
             },
             image: [`${SITE_URL}${s.image || '/images/og-image.jpg'}`],
-            performer: band,
-            organizer: band,
+            performer: bandRef,
+            organizer: bandRef,
             url: `${SITE_URL}/#shows`,
           }
           if (s.free) event.isAccessibleForFree = true
@@ -142,6 +162,8 @@ function showsJsonLd() {
           if (offers) event.offers = offers
           return event
         })
+
+      if (events.length === 0) return html
 
       const json = JSON.stringify({ '@context': 'https://schema.org', '@graph': events }, null, 2)
         .replace(/</g, '\\u003c')
@@ -153,11 +175,79 @@ function showsJsonLd() {
   }
 }
 
+function bandJsonLd() {
+  return {
+    name: 'band-jsonld',
+    async transformIndexHtml(html) {
+      const [{ BRAND, SOCIAL_URLS, ARTIST_LINKS }, { members }, { releases }] = await Promise.all([
+        loadDataModule('./src/data/constants.js'),
+        loadDataModule('./src/data/members.js'),
+        loadDataModule('./src/data/releases.js'),
+      ])
+
+      const bandId = `${SITE_URL}/#band`
+      const graph = {
+        '@context': 'https://schema.org',
+        '@type': 'MusicGroup',
+        '@id': bandId,
+        name: 'Chromattic',
+        description: BRAND.description,
+        url: `${SITE_URL}/`,
+        foundingDate: BRAND.foundingDate,
+        foundingLocation: { '@type': 'Place', name: BRAND.foundingLocation },
+        genre: BRAND.genres,
+        email: BRAND.email,
+        logo: `${SITE_URL}/images/logo.jpg`,
+        image: `${SITE_URL}/images/og-image.jpg`,
+        sameAs: [...SOCIAL_URLS, ARTIST_LINKS.deezer, ARTIST_LINKS.amazonMusic],
+        member: members.map((member) => ({
+          '@type': 'Person',
+          name: member.name,
+          roleName: member.roles.nl,
+        })),
+        album: releases.map((release) => {
+          const links = (release.links || []).map((link) => ({ ...link, url: cleanUrl(link.url) }))
+          const spotify = links.find((link) => link.platform === 'Spotify')
+          const album = {
+            '@type': 'MusicAlbum',
+            name: release.title,
+            datePublished: release.releaseDate,
+            albumReleaseType: release.type === 'EP'
+              ? 'https://schema.org/EPRelease'
+              : 'https://schema.org/SingleRelease',
+            byArtist: { '@id': bandId },
+          }
+          if (release.description?.nl) album.description = release.description.nl
+          if (spotify) album.url = spotify.url
+          const sameAs = links
+            .map((link) => link.url)
+            .filter((url) => url && url !== album.url)
+          if (sameAs.length) album.sameAs = sameAs
+          if (release.tracks?.length) {
+            album.track = release.tracks.map((name) => ({ '@type': 'MusicRecording', name }))
+          }
+          return album
+        }),
+      }
+
+      const json = JSON.stringify(graph, null, 2).replace(/</g, '\\u003c')
+      const script = `<script type="application/ld+json" id="band-jsonld">\n${json}\n    </script>`
+      if (html.includes('id="band-jsonld"')) {
+        return html.replace(/<script type="application\/ld\+json" id="band-jsonld">[\s\S]*?<\/script>/, script)
+      }
+      return html.replace('</head>', `    ${script}\n  </head>`)
+    },
+  }
+}
+
 // https://vite.dev/config/
 // Base path is configurable via VITE_BASE_URL environment variable
 // Defaults to '/' for Vercel deployment
 // GitHub Pages workflow sets VITE_BASE_URL=/Chrommatic/
 export default defineConfig({
-  plugins: [react(), showsJsonLd()],
+  plugins: [react(), bandJsonLd(), showsJsonLd()],
   base: process.env.VITE_BASE_URL || '/',
+  build: {
+    target: 'es2022',
+  },
 })

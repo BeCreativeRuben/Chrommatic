@@ -13,8 +13,12 @@ function clampIndex(next, length) {
   return ((next % length) + length) % length;
 }
 
+function prefersReducedMotion() {
+  return typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
 function CarouselContinuous({ images, className = "", marqueeDurationMs = 40000 }) {
-  const [paused, setPaused] = useState(false);
+  const [paused, setPaused] = useState(prefersReducedMotion);
   const viewportRef = useRef(null);
   const trackRef = useRef(null);
   const rafRef = useRef(0);
@@ -27,8 +31,6 @@ function CarouselContinuous({ images, className = "", marqueeDurationMs = 40000 
 
   const doubled = useMemo(() => [...images, ...images], [images]);
   const [layout, setLayout] = useState({ slidesPerView: 1, cardWidthPx: 0 });
-
-  if (images.length === 0) return null;
 
   useEffect(() => {
     const viewport = viewportRef.current;
@@ -113,13 +115,19 @@ function CarouselContinuous({ images, className = "", marqueeDurationMs = 40000 
     }
   };
 
+  if (images.length === 0) return null;
+
   return (
     <div
       className={`relative w-full ${className}`}
       onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
+      onMouseLeave={() => {
+        if (!prefersReducedMotion()) setPaused(false);
+      }}
       onFocusCapture={() => setPaused(true)}
-      onBlurCapture={() => setPaused(false)}
+      onBlurCapture={() => {
+        if (!prefersReducedMotion()) setPaused(false);
+      }}
       tabIndex={0}
       onKeyDown={(e) => {
         if (e.key === "ArrowLeft") stepByOne(-1);
@@ -170,7 +178,7 @@ function CarouselContinuous({ images, className = "", marqueeDurationMs = 40000 
 function CarouselStep({ images, className = "", autoAdvanceMs = 7000 }) {
   const safeImages = images;
 
-  const [paused, setPaused] = useState(false);
+  const [paused, setPaused] = useState(prefersReducedMotion);
   const [slidesPerView, setSlidesPerView] = useState(1);
   const [stridePx, setStridePx] = useState(0);
   const [withTransition, setWithTransition] = useState(true);
@@ -302,9 +310,13 @@ function CarouselStep({ images, className = "", autoAdvanceMs = 7000 }) {
     <div
       className={`relative w-full ${className}`}
       onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
+      onMouseLeave={() => {
+        if (!prefersReducedMotion()) setPaused(false);
+      }}
       onFocusCapture={() => setPaused(true)}
-      onBlurCapture={() => setPaused(false)}
+      onBlurCapture={() => {
+        if (!prefersReducedMotion()) setPaused(false);
+      }}
       tabIndex={0}
       onKeyDown={onKeyDown}
       aria-label="Photo carousel"

@@ -10,6 +10,7 @@ import Flag from "../ui/Flag";
 import { useScrollSpy } from "../../hooks/useScrollSpy";
 import { useLanguage } from "../../contexts/LanguageContext";
 import { translations } from "../../data/translations";
+import { scrollToId } from "../../utils/scrollTo";
 
 const getNavLinks = (t) => [
   { href: "#bio", label: t.nav.bio, id: "bio" },
@@ -22,7 +23,7 @@ const getNavLinks = (t) => [
 
 function Navbar({ isTimerActive = false }) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [showLogo, setShowLogo] = useState(true); // Toggle between logo and text
+  const showLogo = true;
   const sectionIds = ["hero", "bio", "releases", "shows", "media", "meet-the-band", "contact"];
   const activeSection = useScrollSpy(sectionIds);
   const { language, toggleLanguage } = useLanguage();
@@ -34,14 +35,7 @@ function Navbar({ isTimerActive = false }) {
   const handleLinkClick = (e, href) => {
     e.preventDefault();
     setMenuOpen(false);
-    const targetId = href.substring(1);
-    const targetElement = document.getElementById(targetId);
-    if (targetElement) {
-      targetElement.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
+    scrollToId(href.substring(1));
   };
 
   // Prevent body scroll when mobile menu is open
@@ -106,9 +100,9 @@ function Navbar({ isTimerActive = false }) {
         </a>
         
         <button
-          className="text-white lg:hidden z-50 relative flex-shrink-0 p-2 hover:bg-red-900/20 rounded transition-colors"
+          className="text-white lg:hidden z-50 relative flex-shrink-0 min-h-11 min-w-11 inline-flex items-center justify-center hover:bg-red-900/20 rounded transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
           onClick={toggleMenu}
-          aria-label="Toggle Menu"
+          aria-label={menuOpen ? t.a11y.closeMenu : t.a11y.openMenu}
           aria-expanded={menuOpen}
         >
           {menuOpen ? <X size={24} className="sm:w-7 sm:h-7 w-6 h-6" /> : <Menu size={24} className="sm:w-7 sm:h-7 w-6 h-6" />}
@@ -123,7 +117,7 @@ function Navbar({ isTimerActive = false }) {
                   key={link.href}
                   href={link.href}
                   onClick={(e) => handleLinkClick(e, link.href)}
-                  className={`nav-link ${isActive ? "active" : ""} transition-all duration-300`}
+                  className={`nav-link inline-flex items-center min-h-11 ${isActive ? "active" : ""} transition-all duration-300`}
                 >
                   {link.label}
                 </a>
@@ -133,13 +127,13 @@ function Navbar({ isTimerActive = false }) {
           <a
             href="#contact"
             onClick={(e) => handleLinkClick(e, "#contact")}
-            className="px-6 py-2 bg-gradient-to-r from-red-600 to-red-800 text-white font-bold uppercase tracking-widest text-sm rounded-sm hover:from-red-500 hover:to-red-700 transform hover:scale-105 transition-all duration-300 shadow-lg shadow-red-900/50 hover:shadow-red-500/50"
+            className="min-h-11 inline-flex items-center px-6 py-2 bg-gradient-to-r from-red-600 to-red-800 text-white font-bold uppercase tracking-widest text-sm rounded-sm hover:from-red-500 hover:to-red-700 transform hover:scale-105 transition-all duration-300 shadow-lg shadow-red-900/50 hover:shadow-red-500/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
           >
             {t.nav.bookNow}
           </a>
           <button
             onClick={toggleLanguage}
-            className="flex items-center justify-center gap-2 px-3 py-2 text-white hover:opacity-90 transition-all border border-white/20 hover:border-red-400/50 rounded-sm bg-black/30 hover:bg-black/40"
+            className="min-h-11 flex items-center justify-center gap-2 px-3 py-2 text-white hover:opacity-90 transition-all border border-white/20 hover:border-red-400/50 rounded-sm bg-black/30 hover:bg-black/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
             aria-label={`Switch to ${language === "nl" ? "English" : "Nederlands"}`}
             title={`Switch to ${language === "nl" ? "English" : "Nederlands"}`}
           >
@@ -179,7 +173,7 @@ function Navbar({ isTimerActive = false }) {
                   key={link.href}
                   href={link.href}
                   onClick={(e) => handleLinkClick(e, link.href)}
-                  className={`nav-link ${isActive ? "active" : ""} transition-all duration-300 text-white hover:text-red-400`}
+                  className={`nav-link min-h-11 flex items-center ${isActive ? "active" : ""} transition-all duration-300 text-white hover:text-red-400`}
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   {link.label}
@@ -189,7 +183,7 @@ function Navbar({ isTimerActive = false }) {
             <a
               href="#contact"
               onClick={(e) => handleLinkClick(e, "#contact")}
-              className="mt-4 px-8 py-4 bg-gradient-to-r from-red-600 to-red-800 text-white font-bold uppercase tracking-widest text-lg rounded-sm hover:from-red-500 hover:to-red-700 transform hover:scale-105 transition-all duration-300 shadow-lg shadow-red-900/50 hover:shadow-red-500/50 text-center"
+              className="mt-4 min-h-11 px-8 py-4 bg-gradient-to-r from-red-600 to-red-800 text-white font-bold uppercase tracking-widest text-lg rounded-sm hover:from-red-500 hover:to-red-700 transform hover:scale-105 transition-all duration-300 shadow-lg shadow-red-900/50 hover:shadow-red-500/50 text-center"
             >
               {t.nav.bookNow}
             </a>

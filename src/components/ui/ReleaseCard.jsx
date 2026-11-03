@@ -8,6 +8,7 @@ import { useState, useEffect, useRef } from "react";
 import { Apple, Music2, Youtube, ChevronDown, Music } from "lucide-react";
 import { useLanguage } from "../../contexts/LanguageContext";
 import { translations } from "../../data/translations";
+import { ARTIST_LINKS } from "../../data/constants";
 import LazyImage from "./LazyImage";
 
 function ReleaseCard({ release }) {
@@ -94,7 +95,7 @@ function ReleaseCard({ release }) {
                 href={spotifyLink.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="spotify-button flex-1 min-w-[160px] flex items-center justify-center gap-2 px-6 py-3 bg-[#1DB954] hover:bg-[#1ed760] text-white font-bold uppercase tracking-widest text-sm rounded-sm transform hover:scale-105 transition-all duration-300 shadow-lg shadow-[#1DB954]/50 hover:shadow-[#1ed760]/50 relative overflow-hidden group"
+                className="spotify-button flex-1 min-w-[160px] min-h-11 flex items-center justify-center gap-2 px-6 py-3 bg-[#15873d] hover:bg-[#127336] text-white font-bold uppercase tracking-widest text-sm rounded-sm transform hover:scale-105 transition-all duration-300 shadow-lg shadow-[#15873d]/50 hover:shadow-[#127336]/50 relative overflow-hidden group"
                 aria-label={language === "nl" ? `Beluister ${title} op Spotify` : `Listen to ${title} on Spotify`}
               >
                 <Music2 size={20} className="spotify-icon transition-transform duration-300 group-hover:rotate-12" />
@@ -107,7 +108,7 @@ function ReleaseCard({ release }) {
                 href={youtubeLink.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="youtube-button flex-1 min-w-[160px] flex items-center justify-center gap-2 px-6 py-3 bg-[#FF0000] hover:bg-[#ff1a1a] text-white font-bold uppercase tracking-widest text-sm rounded-sm transform hover:scale-105 transition-all duration-300 shadow-lg shadow-[#FF0000]/50 hover:shadow-[#ff1a1a]/50 relative overflow-hidden group"
+                className="youtube-button flex-1 min-w-[160px] min-h-11 flex items-center justify-center gap-2 px-6 py-3 bg-[#e60000] hover:bg-[#c40000] text-white font-bold uppercase tracking-widest text-sm rounded-sm transform hover:scale-105 transition-all duration-300 shadow-lg shadow-[#e60000]/50 hover:shadow-[#c40000]/50 relative overflow-hidden group"
                 aria-label={language === "nl" ? `Bekijk ${title} op YouTube` : `Watch ${title} on YouTube`}
               >
                 <Youtube size={20} className="youtube-icon transition-transform duration-300" />
@@ -121,8 +122,7 @@ function ReleaseCard({ release }) {
               <button
                 type="button"
                 onClick={() => setShowOtherServices(!showOtherServices)}
-                className="other-services-button w-full flex items-center justify-center gap-2 px-6 py-3 bg-black/40 hover:bg-black/60 border border-red-900/40 hover:border-red-500/60 text-white font-bold uppercase tracking-widest text-sm rounded-sm transform hover:scale-105 transition-all duration-300 relative overflow-hidden group"
-                aria-label={language === "nl" ? "Andere streamingdiensten" : "Other streaming services"}
+                className="other-services-button w-full min-h-11 flex items-center justify-center gap-2 px-6 py-3 bg-black/40 hover:bg-black/60 border border-red-900/40 hover:border-red-500/60 text-white font-bold uppercase tracking-widest text-sm rounded-sm transform hover:scale-105 transition-all duration-300 relative overflow-hidden group focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
                 aria-expanded={showOtherServices}
               >
                 <Music size={20} className="transition-transform duration-300" />
@@ -149,7 +149,7 @@ function ReleaseCard({ release }) {
                     </a>
                   )}
                   <a
-                    href="https://www.deezer.com/en/artist/227349135"
+                    href={ARTIST_LINKS.deezer}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-3 px-4 py-3 hover:bg-red-900/30 transition-colors text-white border-b border-red-900/30"
@@ -163,7 +163,7 @@ function ReleaseCard({ release }) {
                     <span className="text-sm font-semibold">Deezer</span>
                   </a>
                   <a
-                    href="https://music.amazon.com/artists/B0CGPXPYNH/chromattic"
+                    href={ARTIST_LINKS.amazonMusic}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-3 px-4 py-3 hover:bg-red-900/30 transition-colors text-white border-b border-red-900/30"
@@ -176,7 +176,7 @@ function ReleaseCard({ release }) {
                     <span className="text-sm font-semibold">Amazon Music</span>
                   </a>
                   <a
-                    href="https://play.qobuz.com/login"
+                    href={ARTIST_LINKS.qobuz}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-3 px-4 py-3 hover:bg-red-900/30 transition-colors text-white"

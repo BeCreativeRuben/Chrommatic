@@ -8,6 +8,7 @@ export const IMAGE_PATHS = {
   logo: `${BASE_URL}images/logo.jpg`,
   logoNav: `${BASE_URL}images/logo-nav.webp`,
   logoTransparent: `${BASE_URL}images/logo-transparent.webp`,
+  logoTransparent320: `${BASE_URL}images/logo-transparent-320.webp`,
   heroBand: `${BASE_URL}images/hero-band.webp`,
   heroBandMobile: `${BASE_URL}images/hero-band-mobile.webp`,
   covers: {

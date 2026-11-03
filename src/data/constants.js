@@ -6,6 +6,26 @@ export const BRAND = {
   name: "CHROMATTIC",
   email: "chromattic.contact@gmail.com",
   country: "België",
+  url: "https://chromattic.rocks",
+  // Year and place are the ones stated in the bio.
+  foundingDate: "2021",
+  foundingLocation: "Waasland, België",
+  description:
+    "Alternatieve rockband uit het Waasland die de nostalgie van 2000's poppunk mengt met moderne sounds",
+  genres: ["Alternative Rock", "Pop Punk"],
+};
+
+// Profiles linked from the site. Qobuz is a login page on the site, not an artist URL.
+export const SOCIAL_URLS = [
+  "https://www.instagram.com/chromattic_band/",
+  "https://www.facebook.com/chromatticband",
+  "https://www.youtube.com/@chromattic_band",
+];
+
+export const ARTIST_LINKS = {
+  deezer: "https://www.deezer.com/en/artist/227349135",
+  amazonMusic: "https://music.amazon.com/artists/B0CGPXPYNH/chromattic",
+  qobuz: "https://play.qobuz.com/login",
 };
 
 // Mailchimp newsletter form configuration
