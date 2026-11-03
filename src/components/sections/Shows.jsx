@@ -169,7 +169,7 @@ function Shows() {
                   role="radio"
                   aria-checked={isSelected}
                   className={[
-                    "px-5 py-2 rounded-full border text-sm font-semibold tracking-wide transition-all",
+                    "min-h-11 px-5 py-2 rounded-full border text-sm font-semibold tracking-wide transition-all",
                     "focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-black",
                     isSelected
                       ? "bg-red-600 border-red-500 text-white shadow-lg shadow-red-900/40"

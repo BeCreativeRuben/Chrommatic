@@ -11,6 +11,7 @@ function Flag({ country, className = "" }) {
         viewBox="0 0 32 24" 
         xmlns="http://www.w3.org/2000/svg"
         className={className}
+        aria-hidden="true"
       >
         <rect width="32" height="8" fill="#AE1C28"/>
         <rect y="8" width="32" height="8" fill="#FFFFFF"/>
@@ -24,6 +25,7 @@ function Flag({ country, className = "" }) {
         viewBox="0 0 32 24" 
         xmlns="http://www.w3.org/2000/svg"
         className={className}
+        aria-hidden="true"
       >
         <rect width="32" height="24" fill="#012169"/>
         <path d="M0 0L32 24M32 0L0 24" stroke="#FFFFFF" strokeWidth="2.4"/>

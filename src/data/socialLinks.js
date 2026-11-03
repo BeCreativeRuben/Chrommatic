@@ -3,23 +3,26 @@
  */
 
 import { Instagram, Facebook, Youtube } from "lucide-react";
+import { SOCIAL_URLS } from "./constants";
+
+const [instagramUrl, facebookUrl, youtubeUrl] = SOCIAL_URLS;
 
 export const socialLinks = [
   {
     platform: "Instagram",
-    url: "https://www.instagram.com/chromattic_band/",
+    url: instagramUrl,
     icon: Instagram,
     ariaLabel: "Instagram",
   },
   {
     platform: "Facebook",
-    url: "https://www.facebook.com/chromatticband",
+    url: facebookUrl,
     icon: Facebook,
     ariaLabel: "Facebook",
   },
   {
     platform: "YouTube",
-    url: "https://www.youtube.com/@chromattic_band",
+    url: youtubeUrl,
     icon: Youtube,
     ariaLabel: "YouTube",
   },

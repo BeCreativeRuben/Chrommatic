@@ -1,0 +1,74 @@
+# Chromattic
+
+> Chromattic is een alternatieve rockband uit het Waasland (België). De site is tweetalig: Nederlands is de standaard, Engels via de taalschakelaar op dezelfde URL.
+
+Chromattic mengt de nostalgie van 2000's poppunk met moderne sounds. De band is opgericht in 2021, toen vier muzikanten samenkwamen op een zolder in het Waasland.
+
+Canonical URL: https://chromattic.rocks/
+Plain-text versie van deze feiten: https://chromattic.rocks/llms.txt
+
+## Band
+
+- Naam: Chromattic
+- Genre: alternatieve rock, poppunk
+- Herkomst: Waasland, België
+- Opgericht: 2021
+- Leden:
+  - Tijl — leadzanger en bassist
+  - Nand — gitarist, audio engineer
+  - Joeri — gitarist, backing vocalist en keyboard
+  - Korneel — drummer
+
+## Contact en boekingen
+
+- E-mail: chromattic.contact@gmail.com
+- Boekingen, vragen en samenwerkingen lopen via dat e-mailadres
+- Instagram: https://www.instagram.com/chromattic_band/
+- Facebook: https://www.facebook.com/chromatticband
+- YouTube: https://www.youtube.com/@chromattic_band
+- Deezer (artiest, gelinkt vanaf de releases): https://www.deezer.com/en/artist/227349135
+- Amazon Music (artiest, gelinkt vanaf de releases): https://music.amazon.com/artists/B0CGPXPYNH/chromattic
+- De site linkt ook naar Qobuz, maar die link is https://play.qobuz.com/login
+
+Er staat geen telefoonnummer, postadres of boekingsprijs op de site. Het enige bedrag dat de site noemt is gratis toegang bij het optreden waar dat zo staat.
+
+## Releases
+
+Streaming per release (Spotify, YouTube Music, Apple Music) staat op https://chromattic.rocks/#releases
+
+- SH!T — single, 24 oktober 2025. Dit nummer is rechtlijnig en ruw opgebouwd, met vettige riffs en een energie die live meteen het publiek mee krijgt. Spotify: https://open.spotify.com/album/7Hg286ePUEth3GutxzYtXf
+- Walk of Death — single, 18 augustus 2025. Het contrast tussen rustige strofes en stevige refreinen geeft het nummer een sterke opbouw naar een donkere climax. Spotify: https://open.spotify.com/album/5B5uTe2CvcyqzQXijqFkbf
+- Alex — single (opnieuw opgenomen), 11 juli 2025. Deze herwerkte versie geeft het nummer meer punch en dynamiek dan de originele opname op Silent Dejection. Spotify: https://open.spotify.com/album/0ER6e6HmuvVu7lAuXZNEJU
+- Sunrise — single, 21 juni 2025. Met het hogere tempo en epische solo toont dit nummer een zwaardere en technischere kant van de band. Spotify: https://open.spotify.com/album/4kQ4layIvH2VJK14LjZGZ5
+- Silent Dejection — EP, 26 april 2024. Debuut-EP. Tracks: Running Away, Alex, Circles, Super Messy. Spotify: https://open.spotify.com/album/30rLjgsQGTbm6j9Mwi6fgq
+- Circles — single, 27 augustus 2023. Eerste single. Videoclip: https://www.youtube.com/watch?v=g9ULqy29kZw Spotify: https://open.spotify.com/track/0MPvnRkSL8lHW6L4DawEcr
+
+## Optredens
+
+De shows-pagina (https://chromattic.rocks/#shows) toont deze datums. Er is in de sitedata geen optreden na 3 oktober 2026. Gratis staat alleen bij Klusterrock. Een ticketlink staat alleen bij Charlatan.
+
+- 3 oktober 2026, 21:15 — Klusterrock, JC Juvenes, Zele. Gratis toegang.
+- 30 maart 2026, 17:30 — Lustrum Frequenties, Grasveld gebouw S9, campus Sterre UGent, Gent.
+- 12 maart 2026 — Charlatan, Gent. Tickets: https://facebook.com/events/s/early-pedestrian-harvesters/1111353794410132/
+- 18 november 2025 — Burgies on Stage (VTK), Delta Club, Overpoort, Gent. Duur 60 minuten.
+- 27 september 2025 — Kampvuuravond - Scouts Lede, 9340 Lede.
+- 13 september 2025 — 50 dagen 50 party (Privé), Temse.
+- 3 mei 2025 — Sint-Martinus - Piraten-Barbecue, Nieuwkerken-Waas.
+- 3 april 2025 — Café Het Damberd, Gent. Duur 60 minuten.
+- 21 september 2024 — Pop Is Dead, Sint-Niklaas. Duur 75 minuten.
+- 31 augustus 2024 — Frater Field Festival (Privé), Waasmunster.
+- 24 augustus 2024 — Smeulefeesten, Nieuwkerken-Waas.
+- 18 mei 2024 — Droomland, Nieuwkerken-Waas. Duur 30 minuten.
+- 4 mei 2024 — Tapaspibar, Sinaai.
+- 27 april 2024 — Sint-Martinus - Western Barbecue, Nieuwkerken-Waas.
+- 16 december 2023 — Winterrock JOC De Nartist, Temse.
+- 11 augustus 2023 — Bar Bidong, Lede.
+- 29 april 2023 — Rock Zutendaal, Zutendaal.
+
+## Taal
+
+Nederlands (standaard) en Engels gebruiken dezelfde URL. De schakelaar staat in de navigatie. Er is geen aparte Engelse pagina, dus ook geen aparte hreflang-URL voor Engels.
+
+## English summary
+
+Chromattic is an alternative rock band from the Waasland, Belgium, formed in 2021. Members: Tijl (lead vocalist and bassist), Nand (guitarist, audio engineer), Joeri (guitarist, backing vocalist and keyboard), Korneel (drummer). Bookings and questions: chromattic.contact@gmail.com. The site does not list a phone number, postal address, or booking fee. The only price it states is free admission for Klusterrock (3 October 2026, 21:15, JC Juvenes, Zele). Releases and the show list above are the ones published on https://chromattic.rocks/

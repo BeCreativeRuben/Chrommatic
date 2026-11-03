@@ -84,34 +84,19 @@ function Media() {
 
       {/* Video clip */}
       <div className="mt-12">
-        <p
-          className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto"
-          role="link"
-          tabIndex={0}
-          aria-label={
-            language === "nl"
-              ? "Open de videoclip van Circles op YouTube (nieuwe tab)"
-              : "Open the Circles music video on YouTube (new tab)"
-          }
-          onClick={() => {
-            const w = window.open(circlesYouTubeUrl, "_blank", "noopener,noreferrer");
-            if (w) w.opener = null;
-          }}
-          onKeyDown={(e) => {
-            if (e.key === "Enter" || e.key === " ") {
-              e.preventDefault();
-              const w = window.open(circlesYouTubeUrl, "_blank", "noopener,noreferrer");
-              if (w) w.opener = null;
-            }
-          }}
+        <a
+          href={circlesYouTubeUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
         >
           {t.description} <strong className="text-red-400">Circles</strong>.
-        </p>
+        </a>
 
         <div className="relative w-full max-w-5xl mx-auto rounded-lg overflow-hidden shadow-2xl border-2 border-red-900/30" style={{ aspectRatio: '16/9' }}>
           <iframe
             className="w-full h-full absolute inset-0"
-            src="https://www.youtube.com/embed/g9ULqy29kZw"
+            src="https://www.youtube-nocookie.com/embed/g9ULqy29kZw"
             title="Chromattic - Circles (Official Video)"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

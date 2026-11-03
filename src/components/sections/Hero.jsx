@@ -11,16 +11,13 @@ import { shows } from "../../data/shows";
 import { formatDate, isFutureDateTime } from "../../utils/dateFormatter";
 import { ArrowDown, Calendar, MapPin, Ticket } from "lucide-react";
 import { useLightbox } from "../../contexts/LightboxContext";
-
-function scrollToId(id) {
-  const el = document.getElementById(id);
-  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-}
+import { scrollToId } from "../../utils/scrollTo";
 
 function Hero() {
   const { language } = useLanguage();
   const t = translations[language].hero || translations.nl.hero;
   const tShows = translations[language].shows || translations.nl.shows;
+  const tA11y = (translations[language] || translations.nl).a11y;
   const { open } = useLightbox();
 
   const nextShow = useMemo(
@@ -42,7 +39,7 @@ function Hero() {
           src={IMAGE_PATHS.heroBand}
           alt=""
           className="w-full h-full object-cover object-center opacity-40 grayscale contrast-125"
-          fetchPriority="low"
+          fetchPriority="high"
           decoding="async"
         />
       </picture>
@@ -59,15 +56,17 @@ function Hero() {
         {/* Logo (transparent cut-out, no more grey box) */}
         <div className="animate-fade-in">
           <img
-            src={IMAGE_PATHS.logoTransparent}
+            src={IMAGE_PATHS.logoTransparent320}
+            srcSet={`${IMAGE_PATHS.logoTransparent320} 320w, ${IMAGE_PATHS.logoTransparent} 640w`}
+            sizes="(min-width: 1024px) 288px, (min-width: 768px) 240px, (min-width: 640px) 208px, 160px"
             alt="Chromattic logo"
-            width="640"
-            height="640"
+            width="320"
+            height="320"
             className="w-40 sm:w-52 md:w-60 lg:w-72 h-auto mx-auto logo-metallic cursor-zoom-in drop-shadow-[0_0_35px_rgba(239,68,68,0.35)]"
             loading="eager"
-            fetchPriority="high"
             decoding="async"
             role="button"
+            aria-label={tA11y.enlargeLogo}
             tabIndex={0}
             onClick={openLogo}
             onKeyDown={(e) => {
@@ -81,7 +80,7 @@ function Hero() {
 
         {/* Title */}
         <div className="animate-fade-in-delay">
-          <h1 className="mt-2 sm:mt-4 text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold uppercase leading-none tracking-wide sm:tracking-wider font-display gradient-text drop-shadow-[0_4px_24px_rgba(0,0,0,0.6)]">
+          <h1 className="mt-2 sm:mt-4 max-w-full text-[clamp(2.6rem,12vw,8.5rem)] font-bold uppercase leading-none tracking-normal sm:tracking-wide font-display gradient-text drop-shadow-[0_4px_24px_rgba(0,0,0,0.6)]">
             {t.title || "CHROMATTIC"}
           </h1>
           <div className="w-24 sm:w-32 md:w-40 h-1 bg-gradient-to-r from-transparent via-red-500 to-transparent mx-auto mt-5 sm:mt-6"></div>

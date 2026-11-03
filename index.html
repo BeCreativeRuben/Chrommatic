@@ -15,7 +15,11 @@
     <meta name="author" content="Chromattic" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://chromattic.rocks/" />
-    
+    <!-- English is a toggle on this same URL, so it has no separate hreflang target. -->
+    <link rel="alternate" hreflang="nl-BE" href="https://chromattic.rocks/" />
+    <link rel="alternate" hreflang="x-default" href="https://chromattic.rocks/" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="Chromattic, plain-text summary" />
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://chromattic.rocks/" />
@@ -27,59 +31,55 @@
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Chromattic logo op een live foto van de band" />
     <meta property="og:locale" content="nl_BE" />
-    
+    <meta property="og:locale:alternate" content="en_GB" />
+
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="https://chromattic.rocks/" />
     <meta name="twitter:title" content="Chromattic - Alternatieve Rockband uit het Waasland" />
     <meta name="twitter:description" content="Chromattic is een alternatieve rockband uit het Waasland die de nostalgie van 2000's poppunk mengt met moderne sounds." />
     <meta name="twitter:image" content="https://chromattic.rocks/images/og-image.jpg" />
-    
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "MusicGroup",
-      "name": "Chromattic",
-      "description": "Alternatieve rockband uit het Waasland die de nostalgie van 2000's poppunk mengt met moderne sounds",
-      "url": "https://chromattic.rocks",
-      "logo": "https://chromattic.rocks/images/logo.jpg",
-      "image": "https://chromattic.rocks/images/og-image.jpg",
-      "sameAs": [
-        "https://www.instagram.com/chromattic_band/",
-        "https://www.facebook.com/chromatticband",
-        "https://www.youtube.com/@chromattic_band"
-      ],
-      "email": "chromattic.contact@gmail.com",
-      "foundingLocation": {
-        "@type": "Place",
-        "name": "Waasland, België"
-      },
-      "genre": ["Alternative Rock", "Pop Punk"],
-      "album": [
-        {
-          "@type": "MusicAlbum",
-          "name": "Silent Dejection",
-          "datePublished": "2024-04-26"
-        }
-      ]
-    }
-    </script>
-    <!-- Hero logo is the LCP element: fetch it early -->
-    <link rel="preload" as="image" href="/images/logo-transparent.webp" fetchpriority="high" />
-  </head>
-  <body>
-    <!-- Google tag (gtag.js) - in body voor betrouwbare uitvoering -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J2SSMDPZ5J"></script>
+    <meta name="twitter:image:alt" content="Chromattic logo op een live foto van de band" />
+
+    <!-- MusicGroup JSON-LD is filled in at build time from the data files. -->
+    <script type="application/ld+json" id="band-jsonld">{}</script>
+
+    <!-- Hero photo is the LCP element. Start it before the bundle runs. -->
+    <link rel="preload" as="image" href="/images/hero-band-mobile.webp" type="image/webp" media="(max-width: 640px)" fetchpriority="high" />
+    <link rel="preload" as="image" href="/images/hero-band.webp" type="image/webp" media="(min-width: 641px)" fetchpriority="high" />
+
+    <!-- Consent Mode v2 defaults. Analytics storage stays denied until the visitor accepts. -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-J2SSMDPZ5J');
+      gtag('consent', 'default', {
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        analytics_storage: 'denied',
+        functionality_storage: 'granted',
+        security_storage: 'granted',
+        wait_for_update: 500
+      });
+      gtag('set', 'ads_data_redaction', true);
+      gtag('set', 'url_passthrough', true);
+      try {
+        var savedLang = localStorage.getItem('chromattic-language');
+        if (savedLang === 'en' || savedLang === 'nl') document.documentElement.lang = savedLang;
+      } catch (e) {}
     </script>
+  </head>
+  <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
-    <!-- Mailchimp Popup Form -->
-    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/ba3ecc779bc4063fd1d13b7dc/338e7995e427cda5cf4e4850c.js");</script>
+    <noscript>
+      <div style="max-width:40rem;margin:2rem auto;padding:1.5rem;font-family:Georgia,serif;color:#111;">
+        <h1>Chromattic</h1>
+        <p>Alternatieve rockband uit het Waasland (België), opgericht in 2021. Nostalgie van 2000's poppunk gemengd met moderne sounds.</p>
+        <p>Leden: Tijl (leadzanger en bassist), Nand (gitarist, audio engineer), Joeri (gitarist, backing vocalist en keyboard), Korneel (drummer).</p>
+        <p>Boekingen en vragen: <a href="mailto:chromattic.contact@gmail.com">chromattic.contact@gmail.com</a></p>
+        <p>Releases, shows en foto's staan op deze site. Er staan geen boekingsprijzen op de site.</p>
+      </div>
+    </noscript>
   </body>
 </html>

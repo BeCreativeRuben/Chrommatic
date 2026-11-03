@@ -68,12 +68,32 @@ export const translations = {
       title: "Blijf op de hoogte",
       description: "Schrijf je in voor onze nieuwsbrief en mis geen nieuwe releases of shows!",
       placeholder: "Je e-mailadres",
+      emailLabel: "E-mailadres voor de nieuwsbrief",
       subscribe: "Inschrijven",
       success: "Je bent ingeschreven voor de nieuwsbrief! Dankjewel!",
       error: "Er ging iets mis. Probeer het opnieuw.",
+      invalid: "Vul een geldig e-mailadres in.",
     },
     footer: {
       rights: "Alle rechten voorbehouden aan Chromattic.",
+      cookies: "Cookies",
+    },
+    meta: {
+      title: "Chromattic - Alternatieve Rockband uit het Waasland",
+      description:
+        "Chromattic is een alternatieve rockband uit het Waasland die de nostalgie van 2000's poppunk mengt met moderne sounds. Ontdek onze releases, shows en meer.",
+    },
+    a11y: {
+      skip: "Ga naar inhoud",
+      openMenu: "Menu openen",
+      closeMenu: "Menu sluiten",
+      enlargeLogo: "Vergroot het Chromattic-logo",
+    },
+    cookies: {
+      title: "Cookies",
+      body: "Google Analytics en de Mailchimp-popup laden alleen als je akkoord gaat. Zonder akkoord blijven die scripts uit. Je taalvoorkeur bewaren we lokaal.",
+      accept: "Akkoord",
+      reject: "Alleen noodzakelijk",
     },
   },
   en: {
@@ -141,12 +161,32 @@ export const translations = {
       title: "Stay updated",
       description: "Subscribe to our newsletter and don't miss any new releases or shows!",
       placeholder: "Your email address",
+      emailLabel: "Email address for the newsletter",
       subscribe: "Subscribe",
       success: "You are subscribed to the newsletter! Thank you!",
       error: "Something went wrong. Please try again.",
+      invalid: "Enter a valid email address.",
     },
     footer: {
       rights: "All rights reserved to Chromattic.",
+      cookies: "Cookies",
+    },
+    meta: {
+      title: "Chromattic - Alternative rock band from the Waasland",
+      description:
+        "Chromattic is an alternative rock band from the Waasland that blends the nostalgia of 2000s pop punk with modern sounds. Discover our releases, shows and more.",
+    },
+    a11y: {
+      skip: "Skip to content",
+      openMenu: "Open menu",
+      closeMenu: "Close menu",
+      enlargeLogo: "Enlarge the Chromattic logo",
+    },
+    cookies: {
+      title: "Cookies",
+      body: "Google Analytics and the Mailchimp popup load only if you agree. Without agreement those scripts stay off. Your language choice is stored on this device.",
+      accept: "Accept",
+      reject: "Essential only",
     },
   },
 };

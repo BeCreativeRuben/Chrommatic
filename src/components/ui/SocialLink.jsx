@@ -14,9 +14,9 @@ function SocialLink({ url, icon: Icon, ariaLabel, className = "" }) {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={ariaLabel}
-      className={`text-gray-400 hover:text-red-500 transition-colors ${className}`}
+      className={`inline-flex items-center justify-center min-h-11 min-w-11 text-gray-300 hover:text-red-400 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white ${className}`}
     >
-      <Icon size={24} />
+      <Icon size={24} aria-hidden="true" />
     </a>
   );
 }
